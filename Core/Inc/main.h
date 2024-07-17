@@ -65,10 +65,11 @@ void Error_Handler(void);
 #define HSE_IN_GPIO_Port GPIOH
 #define HSE_OUT_Pin GPIO_PIN_1
 #define HSE_OUT_GPIO_Port GPIOH
+#define Panic_Button_Pin GPIO_PIN_3
+#define Panic_Button_GPIO_Port GPIOA
+#define Panic_Button_EXTI_IRQn EXTI3_IRQn
 #define LD4_Pin GPIO_PIN_12
 #define LD4_GPIO_Port GPIOD
-#define VBUS_FS_Pin GPIO_PIN_9
-#define VBUS_FS_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

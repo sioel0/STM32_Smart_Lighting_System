@@ -2,13 +2,13 @@
  * Error.h
  *
  *  Created on: Jul 16, 2024
- *      Author: leoni
+ *      Author: sioel0
  */
+
+#include <stdint.h>
 
 #ifndef CUSTOM_ERROR_INCLUDE_ERROR_H_
 #define CUSTOM_ERROR_INCLUDE_ERROR_H_
-
-#include <stdint.h>
 
 /* ------- Defines -------- */
 

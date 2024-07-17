@@ -25,5 +25,6 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/Custom/Error/Src \
+Drivers/Custom/Panic/Src \
 Drivers/STM32F4xx_HAL_Driver/Src \
 

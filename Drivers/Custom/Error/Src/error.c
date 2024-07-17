@@ -2,7 +2,7 @@
  * error.c
  *
  *  Created on: Jul 16, 2024
- *      Author: leoni
+ *      Author: sioel0
  */
 
 #include <stdint.h>
@@ -30,5 +30,5 @@ void module_reset_errors(uint8_t mod) {
 }
 
 uint8_t module_has_error(uint8_t mod) {
-	return module & mod == mod;
+	return (module & mod) == mod;
 }

@@ -1,0 +1,2 @@
+../Drivers/Custom/Panic/Src/panic_button.c:24:6:panic_button_pressed	1
+../Drivers/Custom/Panic/Src/panic_button.c:34:6:panic_button_reset	1

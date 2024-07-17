@@ -1,0 +1,36 @@
+/*
+ * panic_button.c
+ *
+ *  Created on: Jul 17, 2024
+ *      Author: sioel0
+ */
+
+#include <stdint.h>
+#include "panic_button.h"
+#include "stm32f4xx_hal.h"
+
+/* -------- Global variables -------- */
+uint8_t button_pressed = 0;
+
+/* -------- Functions -------- */
+
+/*
+ * @brief This function reacts to button press
+ * All this function does is setting the button_pressed global
+ * variable to true to trigger the reaction of the other modules
+ * that need this information
+ * @retval None
+ */
+void panic_button_pressed() {
+	button_pressed = 1;
+}
+
+/*
+ * @brief Called to reset the panic button_pressed status
+ * This function resets the button_pressed global variable to stop
+ * the panic procedure execution
+ * @retval None
+ */
+void panic_button_reset() {
+	button_pressed = 0;
+}
