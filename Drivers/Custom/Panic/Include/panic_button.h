@@ -14,11 +14,11 @@
 
 /* -------- Defines -------- */
 // to be defined based on pinout configuration
-#define PANIC_BUTTON_GPIO GPIOA
-#define PANIC_BUTTON_PIN GPIO_PIN_3
+#define PANIC_BUTTON_GPIO GPIOD
+#define PANIC_BUTTON_PIN GPIO_PIN_0
 
 /* -------- Functions -------- */
-void panic_button_pressed();
+void panic_button_set();
 void panic_button_reset();
 
 #endif /* CUSTOM_PANIC_INCLUDE_PANIC_BUTTON_H_ */

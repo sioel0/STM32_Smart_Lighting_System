@@ -11,8 +11,9 @@
 #define CUSTOM_PANIC_INCLUDE_PANIC_BUZZER_H_
 
 /* -------- Defines -------- */
-#define PANIC_BUZZER_PIN GPIO_PIN_2
-#define PANIC_BUZZER_GPIO GPIOA
+#define PANIC_BUZZER_PIN GPIO_PIN_7
+#define PANIC_BUZZER_GPIO GPIOE
+#define PANIC_BUZZER PANIC_BUZZER_GPIO, PANIC_BUZZER_PIN
 
 /* -------- Functions -------- */
 void panic_buzzer_start();

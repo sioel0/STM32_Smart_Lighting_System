@@ -10,7 +10,7 @@
 #include "stm32f4xx_hal.h"
 
 /* -------- Global variables -------- */
-uint8_t button_pressed = 0;
+uint8_t panic_button_pressed = 0;
 
 /* -------- Functions -------- */
 
@@ -21,8 +21,8 @@ uint8_t button_pressed = 0;
  * that need this information
  * @retval None
  */
-void panic_button_pressed() {
-	button_pressed = 1;
+void panic_button_set() {
+	panic_button_pressed = 1;
 }
 
 /*
@@ -32,5 +32,16 @@ void panic_button_pressed() {
  * @retval None
  */
 void panic_button_reset() {
-	button_pressed = 0;
+	panic_button_pressed = 0;
+}
+
+/**
+  * @brief  EXTI line detection callbacks.
+  * @param  GPIO_Pin Specifies the pins connected EXTI line
+  * @retval None
+  */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
+	if(GPIO_Pin == PANIC_BUTTON_PIN) {
+		panic_button_set();
+	}
 }

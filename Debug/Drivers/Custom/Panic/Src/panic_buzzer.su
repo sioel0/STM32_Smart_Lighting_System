@@ -1,2 +1,2 @@
-../Drivers/Custom/Panic/Src/panic_buzzer.c:11:6:panic_buzzer_start	8	static
-../Drivers/Custom/Panic/Src/panic_buzzer.c:15:6:panic_buzzer_stop	8	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:15:6:panic_buzzer_start	8	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:21:6:panic_buzzer_stop	8	static

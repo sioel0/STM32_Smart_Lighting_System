@@ -7,17 +7,20 @@
 C_SRCS += \
 ../Drivers/Custom/Panic/Src/panic.c \
 ../Drivers/Custom/Panic/Src/panic_button.c \
-../Drivers/Custom/Panic/Src/panic_buzzer.c 
+../Drivers/Custom/Panic/Src/panic_buzzer.c \
+../Drivers/Custom/Panic/Src/panic_timer.c 
 
 OBJS += \
 ./Drivers/Custom/Panic/Src/panic.o \
 ./Drivers/Custom/Panic/Src/panic_button.o \
-./Drivers/Custom/Panic/Src/panic_buzzer.o 
+./Drivers/Custom/Panic/Src/panic_buzzer.o \
+./Drivers/Custom/Panic/Src/panic_timer.o 
 
 C_DEPS += \
 ./Drivers/Custom/Panic/Src/panic.d \
 ./Drivers/Custom/Panic/Src/panic_button.d \
-./Drivers/Custom/Panic/Src/panic_buzzer.d 
+./Drivers/Custom/Panic/Src/panic_buzzer.d \
+./Drivers/Custom/Panic/Src/panic_timer.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -27,7 +30,7 @@ Drivers/Custom/Panic/Src/%.o Drivers/Custom/Panic/Src/%.su Drivers/Custom/Panic/
 clean: clean-Drivers-2f-Custom-2f-Panic-2f-Src
 
 clean-Drivers-2f-Custom-2f-Panic-2f-Src:
-	-$(RM) ./Drivers/Custom/Panic/Src/panic.cyclo ./Drivers/Custom/Panic/Src/panic.d ./Drivers/Custom/Panic/Src/panic.o ./Drivers/Custom/Panic/Src/panic.su ./Drivers/Custom/Panic/Src/panic_button.cyclo ./Drivers/Custom/Panic/Src/panic_button.d ./Drivers/Custom/Panic/Src/panic_button.o ./Drivers/Custom/Panic/Src/panic_button.su ./Drivers/Custom/Panic/Src/panic_buzzer.cyclo ./Drivers/Custom/Panic/Src/panic_buzzer.d ./Drivers/Custom/Panic/Src/panic_buzzer.o ./Drivers/Custom/Panic/Src/panic_buzzer.su
+	-$(RM) ./Drivers/Custom/Panic/Src/panic.cyclo ./Drivers/Custom/Panic/Src/panic.d ./Drivers/Custom/Panic/Src/panic.o ./Drivers/Custom/Panic/Src/panic.su ./Drivers/Custom/Panic/Src/panic_button.cyclo ./Drivers/Custom/Panic/Src/panic_button.d ./Drivers/Custom/Panic/Src/panic_button.o ./Drivers/Custom/Panic/Src/panic_button.su ./Drivers/Custom/Panic/Src/panic_buzzer.cyclo ./Drivers/Custom/Panic/Src/panic_buzzer.d ./Drivers/Custom/Panic/Src/panic_buzzer.o ./Drivers/Custom/Panic/Src/panic_buzzer.su ./Drivers/Custom/Panic/Src/panic_timer.cyclo ./Drivers/Custom/Panic/Src/panic_timer.d ./Drivers/Custom/Panic/Src/panic_timer.o ./Drivers/Custom/Panic/Src/panic_timer.su
 
 .PHONY: clean-Drivers-2f-Custom-2f-Panic-2f-Src
 
