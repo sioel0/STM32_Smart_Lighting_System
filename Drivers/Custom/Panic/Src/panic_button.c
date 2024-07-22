@@ -34,14 +34,3 @@ void panic_button_set() {
 void panic_button_reset() {
 	panic_button_pressed = 0;
 }
-
-/**
-  * @brief  EXTI line detection callbacks.
-  * @param  GPIO_Pin Specifies the pins connected EXTI line
-  * @retval None
-  */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
-	if(GPIO_Pin == PANIC_BUTTON_PIN) {
-		panic_button_set();
-	}
-}
