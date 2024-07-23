@@ -71,6 +71,7 @@ void Error_Handler(void);
 #define LD4_GPIO_Port GPIOD
 #define Movement_Sensors_Pin GPIO_PIN_9
 #define Movement_Sensors_GPIO_Port GPIOC
+#define Movement_Sensors_EXTI_IRQn EXTI9_5_IRQn
 #define Panic_Button_Pin GPIO_PIN_0
 #define Panic_Button_GPIO_Port GPIOD
 #define Panic_Button_EXTI_IRQn EXTI0_IRQn
