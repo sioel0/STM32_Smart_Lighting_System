@@ -6,6 +6,7 @@
  */
 
 #include "stm32f4xx_hal.h"
+#include <stdint.h>
 
 #ifndef CUSTOM_PANIC_INCLUDE_PANIC_BUZZER_H_
 #define CUSTOM_PANIC_INCLUDE_PANIC_BUZZER_H_
@@ -18,5 +19,8 @@
 /* -------- Functions -------- */
 void panic_buzzer_start();
 void panic_buzzer_stop();
+uint8_t panic_buzzer_is_active();
+uint8_t panic_buzzer_get_counter();
+void panic_buzzer_reset_counter();
 
 #endif /* CUSTOM_PANIC_INCLUDE_PANIC_BUZZER_H_ */

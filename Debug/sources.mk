@@ -26,5 +26,6 @@ Core/Src \
 Core/Startup \
 Drivers/Custom/Error/Src \
 Drivers/Custom/Panic/Src \
+Drivers/Custom/Sensors/Src \
 Drivers/STM32F4xx_HAL_Driver/Src \
 

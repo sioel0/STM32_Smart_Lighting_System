@@ -20,5 +20,6 @@
 /* -------- Functions -------- */
 void panic_button_set();
 void panic_button_reset();
+uint8_t panic_button_is_pressed();
 
 #endif /* CUSTOM_PANIC_INCLUDE_PANIC_BUTTON_H_ */
