@@ -1,5 +1,5 @@
-../Drivers/Custom/Panic/Src/panic_buzzer.c:15:6:panic_buzzer_start	8	static
-../Drivers/Custom/Panic/Src/panic_buzzer.c:21:6:panic_buzzer_stop	8	static
-../Drivers/Custom/Panic/Src/panic_buzzer.c:26:9:panic_buzzer_is_active	4	static
-../Drivers/Custom/Panic/Src/panic_buzzer.c:30:9:panic_buzzer_get_counter	4	static
-../Drivers/Custom/Panic/Src/panic_buzzer.c:34:6:panic_buzzer_reset_counter	4	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:21:6:panic_buzzer_start	8	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:32:6:panic_buzzer_stop	8	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:42:9:panic_buzzer_is_active	4	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:51:9:panic_buzzer_get_counter	4	static
+../Drivers/Custom/Panic/Src/panic_buzzer.c:61:6:panic_buzzer_reset_counter	4	static

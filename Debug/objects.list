@@ -10,6 +10,7 @@
 "./Drivers/Custom/Panic/Src/panic_button.o"
 "./Drivers/Custom/Panic/Src/panic_buzzer.o"
 "./Drivers/Custom/Panic/Src/panic_timer.o"
+"./Drivers/Custom/Sensors/Src/sensors_light_sensor.o"
 "./Drivers/Custom/Sensors/Src/sensors_movement_sensor.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
 "./Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.o"

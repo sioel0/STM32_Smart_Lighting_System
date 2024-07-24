@@ -1,4 +1,6 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Drivers/Custom/Sensors/Src/sensors_light_sensor.o: \
+ ../Drivers/Custom/Sensors/Src/sensors_light_sensor.c \
+ ../Drivers/Custom/Sensors/Include/sensors_light_sensor.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,15 +30,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Drivers/Custom/Error/Include/error.h \
- ../Drivers/Custom/Panic/Include/panic.h \
- ../Drivers/Custom/Panic/Include/panic_buzzer.h \
- ../Drivers/Custom/Panic/Include/panic_button.h \
- ../Drivers/Custom/Panic/Include/panic_timer.h \
- ../Drivers/Custom/Sensors/Include/sensors_movement_sensor.h \
- ../Drivers/Custom/Sensors/Include/sensors_light_sensor.h
-../Core/Inc/main.h:
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
+../Drivers/Custom/Sensors/Include/sensors_light_sensor.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -67,10 +62,3 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
-../Drivers/Custom/Error/Include/error.h:
-../Drivers/Custom/Panic/Include/panic.h:
-../Drivers/Custom/Panic/Include/panic_buzzer.h:
-../Drivers/Custom/Panic/Include/panic_button.h:
-../Drivers/Custom/Panic/Include/panic_timer.h:
-../Drivers/Custom/Sensors/Include/sensors_movement_sensor.h:
-../Drivers/Custom/Sensors/Include/sensors_light_sensor.h:

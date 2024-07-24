@@ -16,28 +16,30 @@ uint8_t light_sensor_active = 0;
  * @retval current ambient light level
  */
 uint32_t sensors_light_get_ambient_light_level() {
-	return light_sensor_active ?
-			HAL_ADC_GetValue(SENSORS_LIGHT_SENSOR_ADC) :
-			SENSOR_LIGHT_SENSOR_INACTIVE;
+	uint32_t ambient_light = SENSORS_LIGHT_SENSOR_INACTIVE;
+	if(light_sensor_active) {
+		HAL_ADC_Start(SENSORS_LIGHT_SENSOR_ADC);
+		if(HAL_ADC_PollForConversion(SENSORS_LIGHT_SENSOR_ADC, 10) == HAL_OK) {
+			ambient_light = HAL_ADC_GetValue(SENSORS_LIGHT_SENSOR_ADC);
+			HAL_ADC_Stop(SENSORS_LIGHT_SENSOR_ADC);
+		}
+	}
+	return ambient_light;
 }
 
 /*
- * @brief Starts the ADC interface to make it possible to read ambient light level
+ * @brief Sets the light_sensor_active variable to 1 telling that it is possible to check the light intensity value
  * @retval None
  */
 void sensors_light_sensor_start() {
-	HAL_ADC_Start(SENSORS_LIGHT_SENSOR_ADC);
 	light_sensor_active = 1;
 }
 
 /*
- * @brief Stops the ADC interface
- * This function stops the ADC interface sampling, this way it is possible
- * to reduce the power consumption.
+ * @brief Sets the light_sensor_active variable to 0 telling that it is not possible to check the light intensity value
  * @retval None
  */
 void sensors_light_sensor_stop() {
-	HAL_ADC_Stop(SENSORS_LIGHT_SENSOR_ADC);
 	light_sensor_active = 0;
 }
 

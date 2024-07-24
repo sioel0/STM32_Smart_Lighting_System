@@ -5,12 +5,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Drivers/Custom/Sensors/Src/sensors_light_sensor.c \
 ../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c 
 
 OBJS += \
+./Drivers/Custom/Sensors/Src/sensors_light_sensor.o \
 ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.o 
 
 C_DEPS += \
+./Drivers/Custom/Sensors/Src/sensors_light_sensor.d \
 ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.d 
 
 
@@ -21,7 +24,7 @@ Drivers/Custom/Sensors/Src/%.o Drivers/Custom/Sensors/Src/%.su Drivers/Custom/Se
 clean: clean-Drivers-2f-Custom-2f-Sensors-2f-Src
 
 clean-Drivers-2f-Custom-2f-Sensors-2f-Src:
-	-$(RM) ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.cyclo ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.d ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.o ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.su
+	-$(RM) ./Drivers/Custom/Sensors/Src/sensors_light_sensor.cyclo ./Drivers/Custom/Sensors/Src/sensors_light_sensor.d ./Drivers/Custom/Sensors/Src/sensors_light_sensor.o ./Drivers/Custom/Sensors/Src/sensors_light_sensor.su ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.cyclo ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.d ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.o ./Drivers/Custom/Sensors/Src/sensors_movement_sensor.su
 
 .PHONY: clean-Drivers-2f-Custom-2f-Sensors-2f-Src
 

@@ -1,0 +1,4 @@
+../Drivers/Custom/Sensors/Src/sensors_light_sensor.c:18:10:sensors_light_get_ambient_light_level	16	static
+../Drivers/Custom/Sensors/Src/sensors_light_sensor.c:34:6:sensors_light_sensor_start	4	static
+../Drivers/Custom/Sensors/Src/sensors_light_sensor.c:42:6:sensors_light_sensor_stop	4	static
+../Drivers/Custom/Sensors/Src/sensors_light_sensor.c:52:9:sensor_light_sensor_is_active	4	static

@@ -36,7 +36,7 @@ uint8_t sensors_movement_is_detected() {
  * by resetting the associated variable
  * @retval None
  */
-uint8_t sensors_movement_detected_reset() {
+void sensors_movement_detected_reset() {
 	movement_sensor_detected = 0;
 }
 
