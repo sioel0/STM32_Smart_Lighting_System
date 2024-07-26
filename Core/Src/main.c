@@ -24,7 +24,7 @@
 #include "error.h"
 #include "panic.h"
 #include "sensors_movement_sensor.h"
-#include "sensors_light_sensor.h"
+#include "light.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -39,7 +39,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-
+#define SINGLE_PAGE
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -114,12 +114,9 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-  if(sensors_light_get_ambient_light_level() != SENSORS_LIGHT_SENSOR_INACTIVE) {
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	  HAL_Delay(500);
-	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-  }
-  sensors_light_sensor_start();
+  light_init();
+  light_turn_on();
+  light_set_intensity(255);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,12 +124,6 @@ int main(void)
   while (1)
   {
 	panic_main();
-	uint32_t light = sensors_light_get_ambient_light_level();
-	if(light > 2000) {
-		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-
-	}
-	HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -253,7 +244,7 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.ClockSpeed = 100000;
+  hi2c1.Init.ClockSpeed = 400000;
   hi2c1.Init.DutyCycle = I2C_DUTYCYCLE_2;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;

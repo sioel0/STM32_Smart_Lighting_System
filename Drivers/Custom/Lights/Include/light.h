@@ -8,9 +8,14 @@
 #ifndef LIGHTS_INCLUDE_LIGHT_H_
 #define LIGHTS_INCLUDE_LIGHT_H_
 
-void turn_light_on();
-void turn_light_off();
+void light_power_on();
+void light_shutdown();
 
-void set_light_intensity(uint8_t);
+void light_init();
+
+void light_turn_on();
+void light_turn_off();
+
+void light_set_intensity(uint8_t);
 
 #endif /* LIGHTS_INCLUDE_LIGHT_H_ */

@@ -12,6 +12,7 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Drivers/Custom/Sensors/Src/subdir.mk
 -include Drivers/Custom/Panic/Src/subdir.mk
+-include Drivers/Custom/Lights/Src/subdir.mk
 -include Drivers/Custom/Error/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
