@@ -1,6 +1,6 @@
 ../Drivers/Custom/Panic/Src/panic_timer.c:21:6:panic_timer_start	1
 ../Drivers/Custom/Panic/Src/panic_timer.c:32:6:panic_timer_stop	1
-../Drivers/Custom/Panic/Src/panic_timer.c:43:6:HAL_TIM_PeriodElapsedCallback	1
-../Drivers/Custom/Panic/Src/panic_timer.c:51:9:panic_timer_is_active	1
-../Drivers/Custom/Panic/Src/panic_timer.c:59:9:panic_timer_is_elapsed	1
-../Drivers/Custom/Panic/Src/panic_timer.c:68:6:panic_timer_is_elapsed_reset	1
+../Drivers/Custom/Panic/Src/panic_timer.c:42:9:panic_timer_is_active	1
+../Drivers/Custom/Panic/Src/panic_timer.c:50:9:panic_timer_is_elapsed	1
+../Drivers/Custom/Panic/Src/panic_timer.c:54:6:panic_timer_elapsed	1
+../Drivers/Custom/Panic/Src/panic_timer.c:63:6:panic_timer_is_elapsed_reset	1

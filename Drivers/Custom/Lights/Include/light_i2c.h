@@ -13,6 +13,7 @@ extern I2C_HandleTypeDef hi2c1;
 #ifndef CUSTOM_LIGHTS_INCLUDE_LIGHT_I2C_H_
 #define CUSTOM_LIGHTS_INCLUDE_LIGHT_I2C_H_
 
+// i2c addresses have to be shifted left by one on stm32
 #define LIGHT_MATRIX_ADDR 0x74<<1 // address + write mode
 #define LIGHT_I2C_INTERFACE &hi2c1
 
@@ -20,15 +21,15 @@ extern I2C_HandleTypeDef hi2c1;
 #define COMMAND_REGISTER 0xFD
 
 // register definitions
-#define MATRIX_PG1 0x00
-#define MATRIX_PG2 0x01
-#define MATRIX_PG3 0x02
-#define MATRIX_PG4 0x03
-#define MATRIX_PG5 0x04
-#define MATRIX_PG6 0x05
-#define MATRIX_PG7 0x06
-#define MATRIX_PG8 0x07
-#define MATRIX_PG9 0x0B
+#define MATRIX_FRAME1 0x00
+#define MATRIX_FRAME2 0x01
+#define MATRIX_FRAME3 0x02
+#define MATRIX_FRAME4 0x03
+#define MATRIX_FRAME5 0x04
+#define MATRIX_FRAME6 0x05
+#define MATRIX_FRAME7 0x06
+#define MATRIX_FRAME8 0x07
+#define MATRIX_FUNCTION_REGISTER 0x0B
 
 // frame registers pg 1-8
 #define LED_CONTROL_START 0x00
@@ -44,21 +45,13 @@ extern I2C_HandleTypeDef hi2c1;
 /* Configuration register */
 #define CONFIGURATION_REGISTER 0x00
 #define PICTURE_MODE 0x00
+#define AUTOFRAME_MODE 0x01
+#define AUDIOFRAME_MODE 0x10
 #define AUTOPLAY_MODE(mode,fs) 0x00|((mode<<3)|(fs))
 /************************************/
 /* Picture display register */
 #define PICTURE_DISPLAY_REGISTER 0x01
 #define PICTURE_MODE_FRAME(pfs) pfs
-
-// used for fs, pfs
-#define FRAME1 0x00
-#define FRAME2 0x01
-#define FRAME3 0x02
-#define FRAME4 0x03
-#define FRAME5 0x04
-#define FRAME6 0x05
-#define FRAME7 0x06
-#define FRAME8 0x07
 
 /************************************/
 /* Auto Play Control register 1 */

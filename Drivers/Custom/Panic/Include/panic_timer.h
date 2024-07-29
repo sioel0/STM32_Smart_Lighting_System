@@ -19,6 +19,7 @@ void panic_timer_start();
 void panic_timer_stop();
 uint8_t panic_timer_is_active();
 uint8_t panic_timer_is_elapsed();
+void panic_timer_elapsed();
 void panic_timer_is_elapsed_reset();
 
 #endif /* CUSTOM_PANIC_INCLUDE_PANIC_TIMER_H_ */

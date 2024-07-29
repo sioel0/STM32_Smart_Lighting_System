@@ -37,7 +37,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/Custom/Panic/Include/panic_button.h \
  ../Drivers/Custom/Panic/Include/panic_timer.h \
  ../Drivers/Custom/Sensors/Include/sensors_movement_sensor.h \
- ../Drivers/Custom/Lights/Include/light.h
+ ../Drivers/Custom/Lights/Include/light.h \
+ ../Drivers/Custom/Lights/Include/light_i2c.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -78,3 +79,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/Custom/Panic/Include/panic_timer.h:
 ../Drivers/Custom/Sensors/Include/sensors_movement_sensor.h:
 ../Drivers/Custom/Lights/Include/light.h:
+../Drivers/Custom/Lights/Include/light_i2c.h:

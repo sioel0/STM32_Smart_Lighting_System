@@ -10,8 +10,8 @@
 #include "panic_timer.h"
 #include <stdint.h>
 
-uint8_t panic_timer_active = 0; /** Panic timer activation status */
-uint8_t panic_timer_elapsed = 0; /** Panic timer elapsed event interrupt request triggered */
+static uint8_t timer_active = 0; /** Panic timer activation status */
+static uint8_t timer_elapsed = 0; /** Panic timer elapsed event interrupt request triggered */
 
 /*
  * @brief This function make the panic timer start
@@ -20,7 +20,7 @@ uint8_t panic_timer_elapsed = 0; /** Panic timer elapsed event interrupt request
  */
 void panic_timer_start() {
 	HAL_TIM_Base_Start_IT(PANIC_TIMER);
-	panic_timer_active = 1;
+	timer_active = 1;
 	panic_buzzer_reset_counter();
 }
 
@@ -31,17 +31,8 @@ void panic_timer_start() {
  */
 void panic_timer_stop() {
 	HAL_TIM_Base_Stop_IT(PANIC_TIMER);
-	panic_timer_active = 0;
+	timer_active = 0;
 	panic_buzzer_reset_counter();
-}
-
-/*
- * @brief This function is the callback triggered when timer elapsed interrupt is managed
- * Inside this function the panic_timer_elapsed variable is set to 1 to request the interrupt management
- * @retval None
- */
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
-	panic_timer_elapsed = 1;
 }
 
 /*
@@ -49,7 +40,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
  * @retval panic_timer_active variable value
  */
 uint8_t panic_timer_is_active() {
-	return panic_timer_active;
+	return timer_active;
 }
 
 /*
@@ -57,7 +48,11 @@ uint8_t panic_timer_is_active() {
  * @retval panic_timer_elapsed variable value
  */
 uint8_t panic_timer_is_elapsed() {
-	return panic_timer_elapsed;
+	return timer_elapsed;
+}
+
+void panic_timer_elapsed() {
+	timer_elapsed = 1;
 }
 
 /*
@@ -66,5 +61,5 @@ uint8_t panic_timer_is_elapsed() {
  * @retval None
  */
 void panic_timer_is_elapsed_reset() {
-	panic_timer_elapsed = 0;
+	timer_elapsed = 0;
 }
