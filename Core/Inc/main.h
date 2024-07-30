@@ -65,6 +65,8 @@ void Error_Handler(void);
 #define HSE_IN_GPIO_Port GPIOH
 #define HSE_OUT_Pin GPIO_PIN_1
 #define HSE_OUT_GPIO_Port GPIOH
+#define Ambient_Light_Pin GPIO_PIN_0
+#define Ambient_Light_GPIO_Port GPIOA
 #define Panic_Buzzer_Pin GPIO_PIN_7
 #define Panic_Buzzer_GPIO_Port GPIOE
 #define LD4_Pin GPIO_PIN_12
@@ -75,6 +77,10 @@ void Error_Handler(void);
 #define Panic_Button_Pin GPIO_PIN_0
 #define Panic_Button_GPIO_Port GPIOD
 #define Panic_Button_EXTI_IRQn EXTI0_IRQn
+#define Light_SCL_Pin GPIO_PIN_6
+#define Light_SCL_GPIO_Port GPIOB
+#define Light_SDA_Pin GPIO_PIN_7
+#define Light_SDA_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
