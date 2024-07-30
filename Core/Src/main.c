@@ -85,19 +85,19 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin) {
 
 /*
  * @brief This function is the callback triggered when timer elapsed interrupt is managed
- * Inside this function the panic_timer_elapsed variable is set to 1 to request the interrupt management
  * @retval None
  */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 	if(htim->Instance == TIM3) {
 		panic_timer_elapsed();
 	}
-	if(htim->Instance == TIM9) {
-		light_level_check();
-		HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	}
 	if(htim->Instance == TIM4) {
+		light_level_check();
+	}
+	if(htim->Instance == TIM9) {
 		sensors_movement_detected_reset();
+		HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+		HAL_TIM_Base_Stop_IT(&htim9);
 	}
 }
 
@@ -140,7 +140,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   light_init();
   light_default_state(10);
-  HAL_TIM_Base_Start_IT(&htim9);
   light_activate();
   /* USER CODE END 2 */
 
@@ -354,7 +353,7 @@ static void MX_TIM4_Init(void)
   htim4.Instance = TIM4;
   htim4.Init.Prescaler = 47999;
   htim4.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim4.Init.Period = 9990;
+  htim4.Init.Period = 59999;
   htim4.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim4.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim4) != HAL_OK)
@@ -396,9 +395,9 @@ static void MX_TIM9_Init(void)
 
   /* USER CODE END TIM9_Init 1 */
   htim9.Instance = TIM9;
-  htim9.Init.Prescaler = 433;
+  htim9.Init.Prescaler = 19999;
   htim9.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim9.Init.Period = 65535;
+  htim9.Init.Period = 47999;
   htim9.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim9.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim9) != HAL_OK)

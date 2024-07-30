@@ -14,6 +14,7 @@
 #include <string.h>
 
 extern TIM_HandleTypeDef htim4;
+extern TIM_HandleTypeDef htim9;
 
 static uint8_t all_on[18] = {
 		0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -127,10 +128,13 @@ void light_activate() {
 	light_on = 1;
 	sensors_light_sensor_start();
 	check_light_level = 1;
+	htim4.Instance->SR &= ~TIM_SR_UIF;
+	HAL_TIM_Base_Start_IT(&htim4);
 }
 
 void light_deactivate() {
 	light_on = 0;
+	HAL_TIM_Base_Stop_IT(&htim4);
 }
 
 void light_level_check() {
@@ -146,10 +150,12 @@ void light_main() {
 			if(!movement_detection_reacted) {
 				light_transition_to_max();
 				movement_detection_reacted = 1;
-				HAL_TIM_Base_Start_IT(&htim4);
+				htim9.Instance->SR &= ~TIM_SR_UIF;
+				HAL_TIM_Base_Start_IT(&htim9);
 			} else { // reset the timer
-				HAL_TIM_Base_Stop_IT(&htim4);
-				HAL_TIM_Base_Start_IT(&htim4);
+				HAL_TIM_Base_Stop_IT(&htim9);
+				htim9.Instance->SR &= ~TIM_SR_UIF;
+				HAL_TIM_Base_Start_IT(&htim9);
 			}
 			default_state = 0;
 		} else {
@@ -168,6 +174,7 @@ void light_main() {
 				} else {
 					current_light = 10;
 				}
+				check_light_level = 0;
 			}
 			if(!default_state) {
 				light_default_state(current_light);
@@ -175,7 +182,7 @@ void light_main() {
 			} else {
 				light_set_current_intensity(current_light);
 			}
+			movement_detection_reacted = 0;
 		}
 	}
-	check_light_level = 0;
 }
