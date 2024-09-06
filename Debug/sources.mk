@@ -24,7 +24,7 @@ C_DEPS :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
-Drivers/Custom/Error/Src \
+Drivers/Custom/Comm/Src \
 Drivers/Custom/Lights/Src \
 Drivers/Custom/Panic/Src \
 Drivers/Custom/Sensors/Src \

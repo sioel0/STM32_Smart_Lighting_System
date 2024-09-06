@@ -13,7 +13,6 @@
 #define CUSTOM_PANIC_INCLUDE_PANIC_BUTTON_H_
 
 /* -------- Defines -------- */
-// to be defined based on pinout configuration
 #define PANIC_BUTTON_GPIO GPIOD
 #define PANIC_BUTTON_PIN GPIO_PIN_0
 

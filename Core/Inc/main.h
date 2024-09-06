@@ -69,8 +69,8 @@ void Error_Handler(void);
 #define Ambient_Light_GPIO_Port GPIOA
 #define Panic_Buzzer_Pin GPIO_PIN_7
 #define Panic_Buzzer_GPIO_Port GPIOE
-#define LD4_Pin GPIO_PIN_12
-#define LD4_GPIO_Port GPIOD
+#define WC_Reset_Pin GPIO_PIN_12
+#define WC_Reset_GPIO_Port GPIOD
 #define Movement_Sensors_Pin GPIO_PIN_9
 #define Movement_Sensors_GPIO_Port GPIOC
 #define Movement_Sensors_EXTI_IRQn EXTI9_5_IRQn

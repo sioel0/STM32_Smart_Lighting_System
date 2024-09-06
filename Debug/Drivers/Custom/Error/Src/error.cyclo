@@ -1,3 +1,0 @@
-../Drivers/Custom/Error/Src/error.c:22:6:module_set_error	1
-../Drivers/Custom/Error/Src/error.c:27:6:module_reset_errors	1
-../Drivers/Custom/Error/Src/error.c:32:9:module_has_error	1

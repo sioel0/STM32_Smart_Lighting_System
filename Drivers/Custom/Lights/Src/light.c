@@ -28,6 +28,7 @@ static uint8_t all_off[18] = {
 
 static uint8_t light_on = 0;
 static uint8_t check_light_level = 0;
+static uint8_t just_turned_on = 0;
 
 void light_power_on() {
 	if(light_i2c_write_single_register(MATRIX_FUNCTION_REGISTER, SHUTDOWN_REGISTER, TURN_ON) == HAL_BUSY) {
@@ -128,6 +129,7 @@ void light_activate() {
 	light_on = 1;
 	sensors_light_sensor_start();
 	check_light_level = 1;
+	just_turned_on = 1;
 	htim4.Instance->SR &= ~TIM_SR_UIF;
 	HAL_TIM_Base_Start_IT(&htim4);
 }
@@ -146,7 +148,7 @@ void light_main() {
 	static uint8_t current_light = 0;
 	static uint8_t movement_detection_reacted = 0;
 	if(light_on) {
-		if(sensors_movement_is_detected()) {
+		if(sensors_movement_is_detected() && !just_turned_on) {
 			if(!movement_detection_reacted) {
 				light_transition_to_max();
 				movement_detection_reacted = 1;
@@ -175,6 +177,7 @@ void light_main() {
 					current_light = 10;
 				}
 				check_light_level = 0;
+				just_turned_on = 0;
 			}
 			if(!default_state) {
 				light_default_state(current_light);
@@ -184,5 +187,7 @@ void light_main() {
 			}
 			movement_detection_reacted = 0;
 		}
+	} else {
+		light_shutdown();
 	}
 }

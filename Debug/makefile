@@ -13,7 +13,7 @@ RM := rm -rf
 -include Drivers/Custom/Sensors/Src/subdir.mk
 -include Drivers/Custom/Panic/Src/subdir.mk
 -include Drivers/Custom/Lights/Src/subdir.mk
--include Drivers/Custom/Error/Src/subdir.mk
+-include Drivers/Custom/Comm/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
@@ -64,8 +64,8 @@ all: main-build
 main-build: Smart_Lighting_System.elf secondary-outputs
 
 # Tool invocations
-Smart_Lighting_System.elf Smart_Lighting_System.map: $(OBJS) $(USER_OBJS) C:\Users\leoni\STM32CubeIDE\workspace_1.16.0\Smart_Lighting_System\STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Smart_Lighting_System.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\leoni\STM32CubeIDE\workspace_1.16.0\Smart_Lighting_System\STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Smart_Lighting_System.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Smart_Lighting_System.elf Smart_Lighting_System.map: $(OBJS) $(USER_OBJS) /home/sioel0/Desktop/1_Projects/Progettazione_OS_Unimi/Smart_Lighting_System/STM32F411VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Smart_Lighting_System.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/sioel0/Desktop/1_Projects/Progettazione_OS_Unimi/Smart_Lighting_System/STM32F411VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Smart_Lighting_System.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

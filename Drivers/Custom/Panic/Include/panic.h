@@ -12,6 +12,9 @@
 #include "panic_button.h"
 #include "panic_timer.h"
 
+uint8_t panic_is_active();
+void panic_activate();
+void panic_deactivate();
 void panic_main();
 
 #endif /* CUSTOM_PANIC_INCLUDE_PANIC_H_ */
