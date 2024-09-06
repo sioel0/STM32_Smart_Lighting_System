@@ -57,9 +57,10 @@ void light_default_state(uint8_t intensity) {
 			== HAL_BUSY) {
 		Error_Handler();
 	}
-	// setup frame1 to be all on but without outputting light
+
 	light_turn_on_frame(MATRIX_FRAME1);
 	light_set_intensity(MATRIX_FRAME1, intensity);
+	light_power_on();
 }
 
 void light_init() {
@@ -145,11 +146,17 @@ void light_level_check() {
 }
 
 void light_main() {
-	static uint8_t default_state = 1;
+	static uint8_t default_state = 0;
 	static uint8_t current_light = 0;
 	static uint8_t movement_detection_reacted = 0;
 	if(light_on) {
-		if(sensors_movement_is_detected() && !just_turned_on) {
+		if(just_turned_on) {
+			default_state = 0;
+			just_turned_on = 0;
+		} else {
+			// do nothing
+		}
+		if(sensors_movement_is_detected()) {
 			if(!movement_detection_reacted) {
 				light_transition_to_max();
 				movement_detection_reacted = 1;
@@ -162,6 +169,7 @@ void light_main() {
 			}
 			default_state = 0;
 		} else {
+			movement_detection_reacted = 0;
 			if(check_light_level){
 				uint32_t ambient_light = sensors_light_get_ambient_light_level();
 				if(ambient_light <= 500) {
@@ -178,7 +186,6 @@ void light_main() {
 					current_light = 10;
 				}
 				check_light_level = 0;
-				just_turned_on = 0;
 			}
 			if(!default_state) {
 				light_default_state(current_light);
@@ -186,7 +193,6 @@ void light_main() {
 			} else {
 				light_set_current_intensity(current_light);
 			}
-			movement_detection_reacted = 0;
 		}
 	} else {
 		light_shutdown();

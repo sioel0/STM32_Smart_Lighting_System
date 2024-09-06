@@ -145,7 +145,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
   light_init();
   panic_activate();
-  light_deactivate();
   comm_init();
   /* USER CODE END 2 */
 

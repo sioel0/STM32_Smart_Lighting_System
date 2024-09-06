@@ -34,6 +34,8 @@
 #define TURN_PANIC_OFF   0x04
 #define TURN_LIGHT_ON    0x08
 #define TURN_LIGHT_OFF   0x10
+#define TURN_MVMT_ON     0x11
+#define TURN_MVMT_OFF    0x12
 
 void protocol_interpret_cmd_packet(uint8_t*, uint8_t);
 

@@ -38,7 +38,8 @@ Drivers/Custom/Comm/Src/protocol.o: ../Drivers/Custom/Comm/Src/protocol.c \
  ../Drivers/Custom/Panic/Include/panic.h \
  ../Drivers/Custom/Panic/Include/panic_buzzer.h \
  ../Drivers/Custom/Panic/Include/panic_button.h \
- ../Drivers/Custom/Panic/Include/panic_timer.h
+ ../Drivers/Custom/Panic/Include/panic_timer.h \
+ ../Drivers/Custom/Sensors/Include/sensors_movement_sensor.h
 ../Drivers/Custom/Comm/Include/protocol.h:
 ../Drivers/Custom/Lights/Include/light.h:
 ../Drivers/Custom/Lights/Include/light_i2c.h:
@@ -79,3 +80,4 @@ Drivers/Custom/Comm/Src/protocol.o: ../Drivers/Custom/Comm/Src/protocol.c \
 ../Drivers/Custom/Panic/Include/panic_buzzer.h:
 ../Drivers/Custom/Panic/Include/panic_button.h:
 ../Drivers/Custom/Panic/Include/panic_timer.h:
+../Drivers/Custom/Sensors/Include/sensors_movement_sensor.h:

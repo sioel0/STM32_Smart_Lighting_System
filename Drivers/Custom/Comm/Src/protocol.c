@@ -8,6 +8,7 @@
 #include "protocol.h"
 #include "light.h"
 #include "panic.h"
+#include "sensors_movement_sensor.h"
 
 void protocol_interpret_cmd_packet(uint8_t* packet, uint8_t len) {
 	if(packet[0] == CMD_PACKET) {
@@ -27,6 +28,12 @@ void protocol_interpret_cmd_packet(uint8_t* packet, uint8_t len) {
 			break;
 		case TURN_LIGHT_OFF:
 			light_deactivate();
+			break;
+		case TURN_MVMT_ON:
+			sensors_movement_sensor_on();
+			break;
+		case TURN_MVMT_OFF:
+			sensors_movement_sensor_off();
 			break;
 		default:
 			break;
