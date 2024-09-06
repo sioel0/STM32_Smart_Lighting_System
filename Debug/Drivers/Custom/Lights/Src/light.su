@@ -9,5 +9,5 @@
 ../Drivers/Custom/Lights/Src/light.c:124:9:light_is_on	4	static
 ../Drivers/Custom/Lights/Src/light.c:128:6:light_activate	8	static
 ../Drivers/Custom/Lights/Src/light.c:137:6:light_deactivate	8	static
-../Drivers/Custom/Lights/Src/light.c:142:6:light_level_check	4	static
-../Drivers/Custom/Lights/Src/light.c:146:6:light_main	16	static
+../Drivers/Custom/Lights/Src/light.c:143:6:light_level_check	4	static
+../Drivers/Custom/Lights/Src/light.c:147:6:light_main	16	static

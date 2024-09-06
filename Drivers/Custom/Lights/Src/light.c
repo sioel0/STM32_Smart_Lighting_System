@@ -136,6 +136,7 @@ void light_activate() {
 
 void light_deactivate() {
 	light_on = 0;
+	sensors_light_sensor_stop();
 	HAL_TIM_Base_Stop_IT(&htim4);
 }
 
