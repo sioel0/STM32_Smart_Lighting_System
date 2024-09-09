@@ -1,0 +1,23 @@
+\doxysection{panic\+\_\+buzzer.\+h}
+\hypertarget{panic__buzzer_8h_source}{}\label{panic__buzzer_8h_source}\index{Drivers/Custom/Panic/Include/panic\_buzzer.h@{Drivers/Custom/Panic/Include/panic\_buzzer.h}}
+\mbox{\hyperlink{panic__buzzer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_PANIC\_INCLUDE\_PANIC\_BUZZER\_H\_}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ CUSTOM\_PANIC\_INCLUDE\_PANIC\_BUZZER\_H\_}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx__hal_8h}{stm32f4xx\_hal.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ PANIC\_BUZZER\_PIN\ GPIO\_PIN\_7\ }}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ PANIC\_BUZZER\_GPIO\ GPIOE\ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ PANIC\_BUZZER\ PANIC\_BUZZER\_GPIO,\ PANIC\_BUZZER\_PIN\ }}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__buzzer_8h_a9b81d88f458591b9c52e806883132017}{panic\_buzzer\_start}}();}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__buzzer_8h_ac86fbae8b6579fa772c0653bd0d2b86a}{panic\_buzzer\_stop}}();}
+\DoxyCodeLine{00029\ uint8\_t\ \mbox{\hyperlink{panic__buzzer_8h_afb1009f3f90fe4469b65b17d7d301a0d}{panic\_buzzer\_is\_active}}();}
+\DoxyCodeLine{00033\ uint8\_t\ \mbox{\hyperlink{panic__buzzer_8h_a6152325e5b8bdb602e3627c6fc32313d}{panic\_buzzer\_get\_counter}}();}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__buzzer_8h_a6ab7f8360e8542f11e91a208679f0994}{panic\_buzzer\_reset\_counter}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CUSTOM\_PANIC\_INCLUDE\_PANIC\_BUZZER\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

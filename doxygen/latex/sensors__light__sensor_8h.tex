@@ -1,0 +1,47 @@
+\doxysection{Drivers/\+Custom/\+Sensors/\+Include/sensors\+\_\+light\+\_\+sensor.h File Reference}
+\hypertarget{sensors__light__sensor_8h}{}\label{sensors__light__sensor_8h}\index{Drivers/Custom/Sensors/Include/sensors\_light\_sensor.h@{Drivers/Custom/Sensors/Include/sensors\_light\_sensor.h}}
+
+
+This file contains all the necessary functions to make the ambient light sensor work.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sensors__light__sensor_8h_a6d7385c178499322b366877cb8ad5099}\label{sensors__light__sensor_8h_a6d7385c178499322b366877cb8ad5099} 
+\#define {\bfseries SENSORS\+\_\+\+LIGHT\+\_\+\+SENSOR\+\_\+\+ADC}~\&hadc1 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} ADC interface that is used to get ambient light level \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{sensors__light__sensor_8h_aa09424cc5dc97831629a78315209423c}\label{sensors__light__sensor_8h_aa09424cc5dc97831629a78315209423c} 
+\#define {\bfseries SENSORS\+\_\+\+LIGHT\+\_\+\+SENSOR\+\_\+\+INACTIVE}~0x11111111 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Light level returned if the light sensors is inactive \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sensors__light__sensor_8h_a95a224a57205d74472a66d8969307b30}\label{sensors__light__sensor_8h_a95a224a57205d74472a66d8969307b30} 
+uint32\+\_\+t {\bfseries sensors\+\_\+light\+\_\+get\+\_\+ambient\+\_\+light\+\_\+level} ()
+\item 
+\Hypertarget{sensors__light__sensor_8h_ad89a979923b16d1b5514a7fab00e42bb}\label{sensors__light__sensor_8h_ad89a979923b16d1b5514a7fab00e42bb} 
+void {\bfseries sensors\+\_\+light\+\_\+sensor\+\_\+start} ()
+\item 
+\Hypertarget{sensors__light__sensor_8h_a1577f2659fc92af8e2373860959f27a8}\label{sensors__light__sensor_8h_a1577f2659fc92af8e2373860959f27a8} 
+void {\bfseries sensors\+\_\+light\+\_\+sensor\+\_\+stop} ()
+\item 
+\Hypertarget{sensors__light__sensor_8h_a70067a4056c165dbf3db4046fc2df63a}\label{sensors__light__sensor_8h_a70067a4056c165dbf3db4046fc2df63a} 
+uint8\+\_\+t {\bfseries sensors\+\_\+light\+\_\+sensor\+\_\+is\+\_\+active} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sensors__light__sensor_8h_a22b804736f5648d52f639b2647d4ed13}\label{sensors__light__sensor_8h_a22b804736f5648d52f639b2647d4ed13} 
+\mbox{\hyperlink{structADC__HandleTypeDef}{ADC\+\_\+\+Handle\+Type\+Def}} {\bfseries hadc1}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the necessary functions to make the ambient light sensor work. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}

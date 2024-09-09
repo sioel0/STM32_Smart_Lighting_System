@@ -1,0 +1,30 @@
+\doxysection{comm.\+h}
+\hypertarget{comm_8h_source}{}\label{comm_8h_source}\index{Drivers/Custom/Comm/Include/comm.h@{Drivers/Custom/Comm/Include/comm.h}}
+\mbox{\hyperlink{comm_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx__hal_8h}{stm32f4xx\_hal.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_COMM\_INCLUDE\_COMM\_H\_}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ CUSTOM\_COMM\_INCLUDE\_COMM\_H\_}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{protocol_8h}{protocol.h}}"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{struct____UART__HandleTypeDef}{UART\_HandleTypeDef}}\ huart2;}
+\DoxyCodeLine{00016\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structTIM__HandleTypeDef}{TIM\_HandleTypeDef}}\ htim11;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ COMM\_UART\_INTERFACE\ \&huart2\ }}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ COMM\_TIMER\ \&htim11\ }}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ PACKET\_SIZE\ 2\ }}
+\DoxyCodeLine{00025\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ periodic\_packet[PACKET\_SIZE]\ =\ \{PERIODIC\_PACKET,\ NO\_DATA\};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ uint8\_t\ panic\_packet[PACKET\_SIZE]\ =\ \{PANIC\_PACKET,\ NO\_DATA\};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00038\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{comm_8h_a1f010f1e9394b57c0a2a63d9330e7fd4}{comm\_send\_data}}(\textcolor{keyword}{const}\ uint8\_t*\ data);}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{comm_8h_ab2d2bcb7314dc4ab3839b02daf45ab9c}{comm\_init}}();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CUSTOM\_COMM\_INCLUDE\_COMM\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -1,0 +1,53 @@
+\doxysection{Drivers/\+Custom/\+Panic/\+Include/panic\+\_\+button.h File Reference}
+\hypertarget{panic__button_8h}{}\label{panic__button_8h}\index{Drivers/Custom/Panic/Include/panic\_button.h@{Drivers/Custom/Panic/Include/panic\_button.h}}
+
+
+This file contains all the necessary functions to make the panic button work.  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{panic__button_8h_a1a109b4ba749a4c2c9958b75fc9ba28d}\label{panic__button_8h_a1a109b4ba749a4c2c9958b75fc9ba28d} 
+\#define {\bfseries PANIC\+\_\+\+BUTTON\+\_\+\+GPIO}~GPIOD /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic button gpio interface \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{panic__button_8h_a30cbfbec4d88ff95f722bff1d25c7e58}\label{panic__button_8h_a30cbfbec4d88ff95f722bff1d25c7e58} 
+\#define {\bfseries PANIC\+\_\+\+BUTTON\+\_\+\+PIN}~GPIO\+\_\+\+PIN\+\_\+0 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic button pin \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{panic__button_8h_a35afa41b899326a80d078390a451f15d}\label{panic__button_8h_a35afa41b899326a80d078390a451f15d} 
+void {\bfseries panic\+\_\+button\+\_\+set} ()
+\begin{DoxyCompactList}\small\item\em This function is used to indicate that the button has been pressed. \end{DoxyCompactList}\item 
+\Hypertarget{panic__button_8h_a0fae2234366cb13497dd6a2f29030c84}\label{panic__button_8h_a0fae2234366cb13497dd6a2f29030c84} 
+void {\bfseries panic\+\_\+button\+\_\+reset} ()
+\begin{DoxyCompactList}\small\item\em This function is used to indicate that all the necessary reactions has been triggered after button press. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{panic__button_8h_ae740df4f5f043d60b6f237b9e0cc73f4}{panic\+\_\+button\+\_\+is\+\_\+pressed}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to acknowledge if the button has been pressed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the necessary functions to make the panic button work. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{panic__button_8h_ae740df4f5f043d60b6f237b9e0cc73f4}\label{panic__button_8h_ae740df4f5f043d60b6f237b9e0cc73f4} 
+\index{panic\_button.h@{panic\_button.h}!panic\_button\_is\_pressed@{panic\_button\_is\_pressed}}
+\index{panic\_button\_is\_pressed@{panic\_button\_is\_pressed}!panic\_button.h@{panic\_button.h}}
+\doxysubsubsection{\texorpdfstring{panic\_button\_is\_pressed()}{panic\_button\_is\_pressed()}}
+{\footnotesize\ttfamily uint8\+\_\+t panic\+\_\+button\+\_\+is\+\_\+pressed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to acknowledge if the button has been pressed. 
+
+\begin{DoxyReturn}{Returns}
+1 if the button has been pressed 0 otherwise 
+\end{DoxyReturn}

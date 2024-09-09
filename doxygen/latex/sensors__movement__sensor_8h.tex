@@ -1,0 +1,62 @@
+\doxysection{Drivers/\+Custom/\+Sensors/\+Include/sensors\+\_\+movement\+\_\+sensor.h File Reference}
+\hypertarget{sensors__movement__sensor_8h}{}\label{sensors__movement__sensor_8h}\index{Drivers/Custom/Sensors/Include/sensors\_movement\_sensor.h@{Drivers/Custom/Sensors/Include/sensors\_movement\_sensor.h}}
+
+
+This file contains all the functions used to interact with the device ambient light detection sensor.  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sensors__movement__sensor_8h_ad8477b049bdfe0949615b640edde6b5b}\label{sensors__movement__sensor_8h_ad8477b049bdfe0949615b640edde6b5b} 
+\#define {\bfseries MOVEMENT\+\_\+\+SENSOR\+\_\+\+GPIO}~GPIOC
+\item 
+\Hypertarget{sensors__movement__sensor_8h_ac60222791589f64f93b6ec022ac642dd}\label{sensors__movement__sensor_8h_ac60222791589f64f93b6ec022ac642dd} 
+\#define {\bfseries MOVEMENT\+\_\+\+SENSOR\+\_\+\+PIN}~GPIO\+\_\+\+PIN\+\_\+9
+\item 
+\Hypertarget{sensors__movement__sensor_8h_aab06a350e156de2f3c51c1dcb3c9b27b}\label{sensors__movement__sensor_8h_aab06a350e156de2f3c51c1dcb3c9b27b} 
+\#define {\bfseries MOVEMENT\+\_\+\+SENSOR}~MOVEMENT\+\_\+\+SENSOR\+\_\+\+GPIO, MOVEMENT\+\_\+\+SENSOR\+\_\+\+PIN
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{sensors__movement__sensor_8h_a315a8562108a72bfa42e29b9c1ff58aa}\label{sensors__movement__sensor_8h_a315a8562108a72bfa42e29b9c1ff58aa} 
+void {\bfseries sensors\+\_\+movement\+\_\+detected} ()
+\begin{DoxyCompactList}\small\item\em This function is used to tell that some movement has been detected. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{sensors__movement__sensor_8h_a6652ad4cc9041619b378c254a3fdd022}{sensors\+\_\+movement\+\_\+is\+\_\+detected}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to acknowledge if any movement has been detected. \end{DoxyCompactList}\item 
+\Hypertarget{sensors__movement__sensor_8h_a0930e9f9dfdfaf842b97a4023a7b52b0}\label{sensors__movement__sensor_8h_a0930e9f9dfdfaf842b97a4023a7b52b0} 
+void {\bfseries sensors\+\_\+movement\+\_\+detected\+\_\+reset} ()
+\begin{DoxyCompactList}\small\item\em This function is used to reset the movement detection state after a proper reaction has been triggered. \end{DoxyCompactList}\item 
+\Hypertarget{sensors__movement__sensor_8h_a01bff9fa43efba0814e760576349e4b8}\label{sensors__movement__sensor_8h_a01bff9fa43efba0814e760576349e4b8} 
+void {\bfseries sensors\+\_\+movement\+\_\+sensor\+\_\+on} ()
+\begin{DoxyCompactList}\small\item\em This function is used to turn on the movement detection sensor. \end{DoxyCompactList}\item 
+\Hypertarget{sensors__movement__sensor_8h_a4dd3f02a7739c57064d7dba14c13256d}\label{sensors__movement__sensor_8h_a4dd3f02a7739c57064d7dba14c13256d} 
+void {\bfseries sensors\+\_\+movement\+\_\+sensor\+\_\+off} ()
+\begin{DoxyCompactList}\small\item\em This function is used to turn off the movement detection sensor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the functions used to interact with the device ambient light detection sensor. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{sensors__movement__sensor_8h_a6652ad4cc9041619b378c254a3fdd022}\label{sensors__movement__sensor_8h_a6652ad4cc9041619b378c254a3fdd022} 
+\index{sensors\_movement\_sensor.h@{sensors\_movement\_sensor.h}!sensors\_movement\_is\_detected@{sensors\_movement\_is\_detected}}
+\index{sensors\_movement\_is\_detected@{sensors\_movement\_is\_detected}!sensors\_movement\_sensor.h@{sensors\_movement\_sensor.h}}
+\doxysubsubsection{\texorpdfstring{sensors\_movement\_is\_detected()}{sensors\_movement\_is\_detected()}}
+{\footnotesize\ttfamily uint8\+\_\+t sensors\+\_\+movement\+\_\+is\+\_\+detected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to acknowledge if any movement has been detected. 
+
+\begin{DoxyReturn}{Returns}
+1 if movement has been detected 0 otherwise 
+\end{DoxyReturn}

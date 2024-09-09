@@ -1,0 +1,87 @@
+\doxysection{Drivers/\+Custom/\+Panic/\+Include/panic\+\_\+timer.h File Reference}
+\hypertarget{panic__timer_8h}{}\label{panic__timer_8h}\index{Drivers/Custom/Panic/Include/panic\_timer.h@{Drivers/Custom/Panic/Include/panic\_timer.h}}
+
+
+This file contains all the necessary functions to interact with the timer which is used by the panic module to trigger buzzer sounds.  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{panic__timer_8h_abc6c31858850d5ead16e40eceff95446}\label{panic__timer_8h_abc6c31858850d5ead16e40eceff95446} 
+\#define {\bfseries PANIC\+\_\+\+TIMER}~\&htim3 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic timer id \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{panic__timer_8h_af6af04b7084b17b89d1bad9a8126d1f6}{panic\+\_\+timer\+\_\+start}} ()
+\begin{DoxyCompactList}\small\item\em Make the panic timer start. \end{DoxyCompactList}\item 
+\Hypertarget{panic__timer_8h_ac0c7dd0a50e4a2fbca59af5d469fdc42}\label{panic__timer_8h_ac0c7dd0a50e4a2fbca59af5d469fdc42} 
+void {\bfseries panic\+\_\+timer\+\_\+stop} ()
+\begin{DoxyCompactList}\small\item\em Turn off the panic timer. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{panic__timer_8h_a39d297064482b6973d7e6d202342bf43}{panic\+\_\+timer\+\_\+is\+\_\+active}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to acknowledge if the panic timer is currently running. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{panic__timer_8h_a66ae6c348e54bf189f36552c9c375453}{panic\+\_\+timer\+\_\+is\+\_\+elapsed}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to check if the timer is elapsed. \end{DoxyCompactList}\item 
+\Hypertarget{panic__timer_8h_ab02b42e32b03da6ffc21d1fa271f1417}\label{panic__timer_8h_ab02b42e32b03da6ffc21d1fa271f1417} 
+void {\bfseries panic\+\_\+timer\+\_\+elapsed} ()
+\begin{DoxyCompactList}\small\item\em This function is used to tell that the panic timer is elapsed. \end{DoxyCompactList}\item 
+\Hypertarget{panic__timer_8h_a5a933cb5ab8d6aff9771883876dd4743}\label{panic__timer_8h_a5a933cb5ab8d6aff9771883876dd4743} 
+void {\bfseries panic\+\_\+timer\+\_\+is\+\_\+elapsed\+\_\+reset} ()
+\begin{DoxyCompactList}\small\item\em This timer is used to reset the elapsed variable after a proper reaction has been triggered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{panic__timer_8h_aac3d2c59ee0e3bbae1b99529a154eb62}\label{panic__timer_8h_aac3d2c59ee0e3bbae1b99529a154eb62} 
+\mbox{\hyperlink{structTIM__HandleTypeDef}{TIM\+\_\+\+Handle\+Type\+Def}} {\bfseries htim3}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the necessary functions to interact with the timer which is used by the panic module to trigger buzzer sounds. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{panic__timer_8h_a39d297064482b6973d7e6d202342bf43}\label{panic__timer_8h_a39d297064482b6973d7e6d202342bf43} 
+\index{panic\_timer.h@{panic\_timer.h}!panic\_timer\_is\_active@{panic\_timer\_is\_active}}
+\index{panic\_timer\_is\_active@{panic\_timer\_is\_active}!panic\_timer.h@{panic\_timer.h}}
+\doxysubsubsection{\texorpdfstring{panic\_timer\_is\_active()}{panic\_timer\_is\_active()}}
+{\footnotesize\ttfamily uint8\+\_\+t panic\+\_\+timer\+\_\+is\+\_\+active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to acknowledge if the panic timer is currently running. 
+
+\begin{DoxyReturn}{Returns}
+1 if it is running 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{panic__timer_8h_a66ae6c348e54bf189f36552c9c375453}\label{panic__timer_8h_a66ae6c348e54bf189f36552c9c375453} 
+\index{panic\_timer.h@{panic\_timer.h}!panic\_timer\_is\_elapsed@{panic\_timer\_is\_elapsed}}
+\index{panic\_timer\_is\_elapsed@{panic\_timer\_is\_elapsed}!panic\_timer.h@{panic\_timer.h}}
+\doxysubsubsection{\texorpdfstring{panic\_timer\_is\_elapsed()}{panic\_timer\_is\_elapsed()}}
+{\footnotesize\ttfamily uint8\+\_\+t panic\+\_\+timer\+\_\+is\+\_\+elapsed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to check if the timer is elapsed. 
+
+\begin{DoxyReturn}{Returns}
+1 if the timer is elapsed 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{panic__timer_8h_af6af04b7084b17b89d1bad9a8126d1f6}\label{panic__timer_8h_af6af04b7084b17b89d1bad9a8126d1f6} 
+\index{panic\_timer.h@{panic\_timer.h}!panic\_timer\_start@{panic\_timer\_start}}
+\index{panic\_timer\_start@{panic\_timer\_start}!panic\_timer.h@{panic\_timer.h}}
+\doxysubsubsection{\texorpdfstring{panic\_timer\_start()}{panic\_timer\_start()}}
+{\footnotesize\ttfamily void panic\+\_\+timer\+\_\+start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Make the panic timer start. 
+
+Panic timer elapsed event interrupt request triggered 

@@ -1,0 +1,150 @@
+\doxysection{light\+\_\+i2c.\+h}
+\hypertarget{light__i2c_8h_source}{}\label{light__i2c_8h_source}\index{Drivers/Custom/Lights/Include/light\_i2c.h@{Drivers/Custom/Lights/Include/light\_i2c.h}}
+\mbox{\hyperlink{light__i2c_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_LIGHTS\_INCLUDE\_LIGHT\_I2C\_H\_}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ CUSTOM\_LIGHTS\_INCLUDE\_LIGHT\_I2C\_H\_}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx__hal_8h}{stm32f4xx\_hal.h}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structI2C__HandleTypeDef}{I2C\_HandleTypeDef}}\ hi2c1;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ i2c\ addresses\ have\ to\ be\ shifted\ left\ by\ one\ on\ stm32}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ LIGHT\_MATRIX\_ADDR\ 0x74<<1\ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ LIGHT\_I2C\_INTERFACE\ \&hi2c1\ }}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ command\ register}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ COMMAND\_REGISTER\ 0xFD\ }}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ register\ definitions}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME1\ 0x00\ }}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME2\ 0x01\ }}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME3\ 0x02\ }}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME4\ 0x03\ }}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME5\ 0x04\ }}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME6\ 0x05\ }}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME7\ 0x06\ }}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ MATRIX\_FRAME8\ 0x07\ }}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ MATRIX\_FUNCTION\_REGISTER\ 0x0B\ }}
+\DoxyCodeLine{00034\ \textcolor{comment}{//\ frame\ registers\ pg\ 1-\/8}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ LED\_CONTROL\_START\ 0x00\ }}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ LED\_CONTROL\_END\ 0x11\ }}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ BLINK\_CONTROL\_START\ 0x12\ }}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ BLINK\_CONTROL\_END\ 0x23\ }}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ PWM\_CONTROL\_START\ 0x24\ }}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ PWM\_CONTROL\_END\ 0xB3\ }}
+\DoxyCodeLine{00042\ \textcolor{comment}{//\ function\ register\ pg\ 9}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{/*\ Configuration\ register\ */}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ CONFIGURATION\_REGISTER\ 0x00\ }}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ PICTURE\_MODE\ 0x00\ }}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ AUTOFRAME\_MODE\ 0x01\ }}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ AUDIOFRAME\_MODE\ 0x10\ }}
+\DoxyCodeLine{00050\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00051\ \textcolor{comment}{\ *\ @brief\ Enable\ autoplay\ mode\ with\ the\ defined\ options}}
+\DoxyCodeLine{00052\ \textcolor{comment}{\ *\ @param\ mode\ can\ be\ choose\ between\ @ref\ PICTURE\_MODE,\ @ref\ AUTOFRAME\_MODE\ and\ @ref\ AUDIOFRAME\_MODE}}
+\DoxyCodeLine{00053\ \textcolor{comment}{\ *\ @param\ fs\ the\ starting\ frame\ for\ the\ animation}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ *\ @return\ a\ bit\ mask\ representing\ the\ desired\ configuration}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ AUTOPLAY\_MODE(mode,fs)\ 0x00|((mode<<3)|(fs))}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{comment}{/*\ Picture\ display\ register\ */}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ PICTURE\_DISPLAY\_REGISTER\ 0x01\ }}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ PICTURE\_MODE\_FRAME(pfs)\ pfs\ }}
+\DoxyCodeLine{00063\ \textcolor{comment}{/*\ Auto\ Play\ Control\ register\ 1\ */}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ AUTOPLAY\_CONTROL\_REGISTER1\ 0x02\ }}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ AUTOPLAY\_MODE\_CONFIG(cns,fns)\ 0x00|((cns<<4)|(fns))}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ used\ for\ cns\ and\ fns}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ ENDLESS\_ALLFRAME\ 0x00\ }}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES1\ 0x01\ }}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES2\ 0x02\ }}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES3\ 0x03\ }}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES4\ 0x04\ }}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES5\ 0x05\ }}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES6\ 0x06\ }}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ LOOPS\_FRAMES7\ 0x07\ }}
+\DoxyCodeLine{00083\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00084\ \textcolor{comment}{/*\ Auto\ Play\ Control\ register\ 2\ */}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ AUTOPLAY\_CONTROL\_REGISTER2\ 0x03\ }}
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ AUTOPLAY\_DELAY\_CONFIG(a)\ a}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00094\ \textcolor{comment}{/*\ Display\ option\ register\ */}}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ DISPLAY\_OPTION\_REGISTER\ 0x05\ }}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ DISPLAY\_OPTIONS(ic,be,a)\ 0x00|((ic<<5)|(be<<3)|(a))}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{comment}{//\ used\ for\ ic}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ INDEPENDENT\_INTENSITY\ 0x00\ }}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ SAME\_INTENSITY\_ALL\_FRAMES\ 0x01\ }}
+\DoxyCodeLine{00108\ \textcolor{comment}{//\ used\ for\ be}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ BLINK\_DISABLED\ 0x00\ }}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ BLINK\_ENABLED\ 0x01\ }}
+\DoxyCodeLine{00112\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00113\ \textcolor{comment}{/*\ Audio\ synchronization\ register\ */}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ AUDIO\_SYNC\_REGISTER\ 0x06\ }}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ AUDIO\_SYNC\_CONFIG(ae)\ ae}}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{comment}{//\ used\ for\ ae}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#define\ AUDIO\_SYNC\_DISABLED\ 0x00\ }}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#define\ AUDIO\_SYNC\_ENABLED\ 0x01\ }}
+\DoxyCodeLine{00126\ \textcolor{comment}{/*\ Frame\ state\ register\ (read-\/only)\ */}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ FRAME\_STATE\_REGISTER\ 0x07\ }}
+\DoxyCodeLine{00129\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00130\ \textcolor{comment}{/*\ Breath\ control\ register\ 1\ */}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ BREATH\_CONTROL\_REGISTER1\ 0x08\ }}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ fade\ out\ time\ Tx2\string^a}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ fade\ in\ time\ Tx2\string^b}}
+\DoxyCodeLine{00134\ \textcolor{comment}{//\ a,b\ 0\ -\/\ 7}}
+\DoxyCodeLine{00141\ \textcolor{preprocessor}{\#define\ FADE\_TIMEOUT(a,b)\ 0x00|((a<<4)|b)}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \textcolor{comment}{/*\ Breath\ control\ register\ 2\ */}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ BREATH\_CONTROL\_REGISTER2\ 0x09\ }}
+\DoxyCodeLine{00145\ \textcolor{comment}{//\ extinguish\ time\ TX2\string^a}}
+\DoxyCodeLine{00146\ \textcolor{comment}{//\ a\ 0\ -\/\ 7}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ BREATH\_FUNCTION\_CONFIG(b\_en,a)\ 0x00|((b\_en<<4)|a)}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{comment}{//\ used\ for\ b\_en}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ BREATH\_DISABLED\ 0x00\ }}
+\DoxyCodeLine{00157\ \textcolor{preprocessor}{\#define\ BREATH\_ENABLED\ 0x01\ }}
+\DoxyCodeLine{00159\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00160\ \textcolor{comment}{/*\ Shutdown\ register\ */}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ SHUTDOWN\_REGISTER\ 0x0A\ }}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ SHUTDOWN\ 0x00\ }}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ TURN\_ON\ 0x01\ }}
+\DoxyCodeLine{00166\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00167\ \textcolor{preprocessor}{\#define\ AGC\_CONTROL\_REGISTER\ 0x0B\ }}
+\DoxyCodeLine{00168\ \textcolor{comment}{//\ audio\ gain\ selection\ agsx3dB}}
+\DoxyCodeLine{00169\ \textcolor{comment}{//\ ags\ 0\ -\/\ 7}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ AGC\_CONFIG(agcm,agc,ags)\ 0x00|((agcm<<4)|(agc<<3)|ags)}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{comment}{//\ used\ for\ agcm}}
+\DoxyCodeLine{00180\ \textcolor{preprocessor}{\#define\ AGC\_MODE\_SLOW\ 0x00\ }}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ AGC\_MODE\_FAST\ 0x01\ }}
+\DoxyCodeLine{00183\ \textcolor{comment}{//\ used\ for\ agc}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ AGC\_DISABLED\ 0x00\ }}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ AGC\_ENABLED\ 0x01\ }}
+\DoxyCodeLine{00187\ \textcolor{comment}{/************************************/}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ AUDIO\_ADC\_RATE\_REGISTER\ 0x0C}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ ADC\_CONFIG(a)\ a}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00200\ \mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\_StatusTypeDef}}\ \mbox{\hyperlink{light__i2c_8h_a9ec9f09a9e67ee397a7c285c5e8208c0}{light\_i2c\_select\_page}}(uint8\_t\ page);}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00209\ \mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\_StatusTypeDef}}\ \mbox{\hyperlink{light__i2c_8h_aefaafdf4ca0688a7527c8aea7fceae01}{light\_i2c\_write\_single\_register}}(uint8\_t\ page,\ uint8\_t\ reg,\ uint8\_t\ value);}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00212\ \textcolor{comment}{\ *\ @brief\ Send\ any\ amount\ of\ data\ starting\ from\ the\ given\ register}}
+\DoxyCodeLine{00213\ \textcolor{comment}{\ *\ @param\ page\ the\ page\ which\ contains\ the\ data\ destination\ register}}
+\DoxyCodeLine{00214\ \textcolor{comment}{\ *\ @param\ reg\ the\ data\ starting\ register}}
+\DoxyCodeLine{00215\ \textcolor{comment}{\ *\ @param\ data\ the\ data\ that\ needs\ to\ be\ sent}}
+\DoxyCodeLine{00216\ \textcolor{comment}{\ *\ @param\ data\_len\ amount\ of\ bytes\ that\ needs\ to\ be\ sent}}
+\DoxyCodeLine{00217\ \textcolor{comment}{\ *\ @return\ return\ HAL\_OK\ if\ the\ page\ has\ been\ written\ selected\ HAL\_BUSY\ otherwise}}
+\DoxyCodeLine{00218\ \textcolor{comment}{\ *\ This\ function\ uses\ the\ automatic\ address\ increment\ present\ on\ the\ matrix\ led,\ this\ way\ it\ is\ not\ necessary}}
+\DoxyCodeLine{00219\ \textcolor{comment}{\ *\ to\ select\ the\ next\ register\ each\ time}}
+\DoxyCodeLine{00220\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00221\ \mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\_StatusTypeDef}}\ light\_i2c\_send\_data(uint8\_t\ page,\ uint8\_t\ reg,\ uint8\_t*\ data,\ uint8\_t\ data\_len);}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CUSTOM\_LIGHTS\_INCLUDE\_LIGHT\_I2C\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

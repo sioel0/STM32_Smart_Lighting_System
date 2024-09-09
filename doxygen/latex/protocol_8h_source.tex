@@ -1,0 +1,31 @@
+\doxysection{protocol.\+h}
+\hypertarget{protocol_8h_source}{}\label{protocol_8h_source}\index{Drivers/Custom/Comm/Include/protocol.h@{Drivers/Custom/Comm/Include/protocol.h}}
+\mbox{\hyperlink{protocol_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_COMM\_INCLUDE\_PROTOCOL\_H\_}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ CUSTOM\_COMM\_INCLUDE\_PROTOCOL\_H\_}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ WC\_RESET\_GPIO\ GPIOD\ }}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ WC\_RESET\_PIN\ GPIO\_PIN\_12\ }}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ WC\_RESET\ WC\_RESET\_GPIO,\ WC\_RESET\_PIN\ }}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ first\ data\ packet}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ PERIODIC\_PACKET\ \ 0x50\ }}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ CMD\_PACKET\ \ \ \ \ \ \ 0x51\ }}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ PANIC\_PACKET\ \ \ \ \ 0x52\ }}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ cmd\ second\ byte}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ NO\_DATA\ \ \ \ \ \ \ \ \ \ 0x00\ }}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ TRIGGER\_RESET\ \ \ \ 0x01\ }}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ TURN\_PANIC\_ON\ \ \ \ 0x02\ }}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ TURN\_PANIC\_OFF\ \ \ 0x04\ }}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ TURN\_LIGHT\_ON\ \ \ \ 0x08\ }}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ TURN\_LIGHT\_OFF\ \ \ 0x10\ }}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ TURN\_MVMT\_ON\ \ \ \ \ 0x11\ }}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ TURN\_MVMT\_OFF\ \ \ \ 0x12\ }}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{protocol_8h_af61425427a2fc11124a07cad5b487717}{protocol\_interpret\_cmd\_packet}}(uint8\_t*\ packet,\ uint8\_t\ len);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CUSTOM\_COMM\_INCLUDE\_PROTOCOL\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

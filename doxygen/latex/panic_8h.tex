@@ -1,0 +1,48 @@
+\doxysection{Drivers/\+Custom/\+Panic/\+Include/panic.h File Reference}
+\hypertarget{panic_8h}{}\label{panic_8h}\index{Drivers/Custom/Panic/Include/panic.h@{Drivers/Custom/Panic/Include/panic.h}}
+
+
+This file contains all the high level panic module interaction functions.  
+
+
+{\ttfamily \#include "{}panic\+\_\+buzzer.\+h"{}}\newline
+{\ttfamily \#include "{}panic\+\_\+button.\+h"{}}\newline
+{\ttfamily \#include "{}panic\+\_\+timer.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{panic_8h_a75952df8bacbbe407575e371892208fc}{panic\+\_\+is\+\_\+active}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to acknowledge if the panic module is active. \end{DoxyCompactList}\item 
+\Hypertarget{panic_8h_ab691c236fcaa9b13900680a6573a1e2a}\label{panic_8h_ab691c236fcaa9b13900680a6573a1e2a} 
+void {\bfseries panic\+\_\+activate} ()
+\begin{DoxyCompactList}\small\item\em This function is used to activate the panic module. \end{DoxyCompactList}\item 
+\Hypertarget{panic_8h_ac34fa7e4dee0760cbd0e4d403ebd29ba}\label{panic_8h_ac34fa7e4dee0760cbd0e4d403ebd29ba} 
+void {\bfseries panic\+\_\+deactivate} ()
+\begin{DoxyCompactList}\small\item\em this function is used to turn the panic module off \end{DoxyCompactList}\item 
+\Hypertarget{panic_8h_a6b256e3fb558f58d68b6f9c5f533eadb}\label{panic_8h_a6b256e3fb558f58d68b6f9c5f533eadb} 
+void {\bfseries panic\+\_\+main} ()
+\begin{DoxyCompactList}\small\item\em This function is the one that manages all the panic module main loop This function reacts to all the data received from outside to make the panic module work properly. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the high level panic module interaction functions. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{panic_8h_a75952df8bacbbe407575e371892208fc}\label{panic_8h_a75952df8bacbbe407575e371892208fc} 
+\index{panic.h@{panic.h}!panic\_is\_active@{panic\_is\_active}}
+\index{panic\_is\_active@{panic\_is\_active}!panic.h@{panic.h}}
+\doxysubsubsection{\texorpdfstring{panic\_is\_active()}{panic\_is\_active()}}
+{\footnotesize\ttfamily uint8\+\_\+t panic\+\_\+is\+\_\+active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to acknowledge if the panic module is active. 
+
+\begin{DoxyReturn}{Returns}
+1 if it is active 0 otherwise 
+\end{DoxyReturn}

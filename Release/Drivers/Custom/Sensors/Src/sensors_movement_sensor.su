@@ -1,0 +1,5 @@
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:15:6:sensors_movement_detected	0	static
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:19:9:sensors_movement_is_detected	0	static
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:29:6:sensors_movement_detected_reset	0	static
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:37:6:sensors_movement_sensor_on	8	static
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:46:6:sensors_movement_sensor_off	0	static

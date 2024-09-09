@@ -1,0 +1,5 @@
+../Drivers/Custom/Panic/Src/panic_buzzer.c:16:6:panic_buzzer_start	1
+../Drivers/Custom/Panic/Src/panic_buzzer.c:22:6:panic_buzzer_stop	1
+../Drivers/Custom/Panic/Src/panic_buzzer.c:27:9:panic_buzzer_is_active	1
+../Drivers/Custom/Panic/Src/panic_buzzer.c:31:9:panic_buzzer_get_counter	1
+../Drivers/Custom/Panic/Src/panic_buzzer.c:35:6:panic_buzzer_reset_counter	1

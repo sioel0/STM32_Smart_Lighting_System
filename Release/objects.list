@@ -7,7 +7,6 @@
 "./Core/Startup/startup_stm32f411vetx.o"
 "./Drivers/Custom/Comm/Src/comm.o"
 "./Drivers/Custom/Comm/Src/protocol.o"
-"./Drivers/Custom/Error/Src/error.o"
 "./Drivers/Custom/Lights/Src/light.o"
 "./Drivers/Custom/Lights/Src/light_i2c.o"
 "./Drivers/Custom/Panic/Src/panic.o"

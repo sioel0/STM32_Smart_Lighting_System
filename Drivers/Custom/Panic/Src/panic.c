@@ -19,20 +19,19 @@ uint8_t panic_is_active() {
 
 void panic_activate() {
 	panic_on = 1;
+	HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
+	HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 }
 
 void panic_deactivate() {
 	panic_on = 0;
+	HAL_NVIC_DisableIRQ(EXTI0_IRQn);
 }
 
 void panic_init() {
 	panic_activate();
 }
 
-/*
- * @brief Main actions performed each main loop cycle by the panic module
- * @retval None
- */
 void panic_main() {
 	if(panic_on) {
 		if(panic_button_is_pressed()) {

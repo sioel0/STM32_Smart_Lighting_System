@@ -1,0 +1,24 @@
+\doxysection{panic\+\_\+timer.\+h}
+\hypertarget{panic__timer_8h_source}{}\label{panic__timer_8h_source}\index{Drivers/Custom/Panic/Include/panic\_timer.h@{Drivers/Custom/Panic/Include/panic\_timer.h}}
+\mbox{\hyperlink{panic__timer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_PANIC\_INCLUDE\_PANIC\_TIMER\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CUSTOM\_PANIC\_INCLUDE\_PANIC\_TIMER\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx__hal_8h}{stm32f4xx\_hal.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structTIM__HandleTypeDef}{TIM\_HandleTypeDef}}\ htim3;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ PANIC\_TIMER\ \&htim3\ }}
+\DoxyCodeLine{00019\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__timer_8h_af6af04b7084b17b89d1bad9a8126d1f6}{panic\_timer\_start}}();}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__timer_8h_ac0c7dd0a50e4a2fbca59af5d469fdc42}{panic\_timer\_stop}}();}
+\DoxyCodeLine{00028\ uint8\_t\ \mbox{\hyperlink{panic__timer_8h_a39d297064482b6973d7e6d202342bf43}{panic\_timer\_is\_active}}();}
+\DoxyCodeLine{00033\ uint8\_t\ \mbox{\hyperlink{panic__timer_8h_a66ae6c348e54bf189f36552c9c375453}{panic\_timer\_is\_elapsed}}();}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__timer_8h_ab02b42e32b03da6ffc21d1fa271f1417}{panic\_timer\_elapsed}}();}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{panic__timer_8h_a5a933cb5ab8d6aff9771883876dd4743}{panic\_timer\_is\_elapsed\_reset}}();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CUSTOM\_PANIC\_INCLUDE\_PANIC\_TIMER\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

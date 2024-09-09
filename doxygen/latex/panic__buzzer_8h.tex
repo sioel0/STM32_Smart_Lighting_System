@@ -1,0 +1,72 @@
+\doxysection{Drivers/\+Custom/\+Panic/\+Include/panic\+\_\+buzzer.h File Reference}
+\hypertarget{panic__buzzer_8h}{}\label{panic__buzzer_8h}\index{Drivers/Custom/Panic/Include/panic\_buzzer.h@{Drivers/Custom/Panic/Include/panic\_buzzer.h}}
+
+
+This file contains all the necessary functions to make the panic buzzer work.  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{panic__buzzer_8h_af25299f7de7002987729021fa394737d}\label{panic__buzzer_8h_af25299f7de7002987729021fa394737d} 
+\#define {\bfseries PANIC\+\_\+\+BUZZER\+\_\+\+PIN}~GPIO\+\_\+\+PIN\+\_\+7 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic buzzer pin \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{panic__buzzer_8h_ad76fd79a6885313699f79b526fcde099}\label{panic__buzzer_8h_ad76fd79a6885313699f79b526fcde099} 
+\#define {\bfseries PANIC\+\_\+\+BUZZER\+\_\+\+GPIO}~GPIOE /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic buzzer gpio port \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{panic__buzzer_8h_a0a701f220a6588e1b6dfed870d5ce182}\label{panic__buzzer_8h_a0a701f220a6588e1b6dfed870d5ce182} 
+\#define {\bfseries PANIC\+\_\+\+BUZZER}~PANIC\+\_\+\+BUZZER\+\_\+\+GPIO, PANIC\+\_\+\+BUZZER\+\_\+\+PIN /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic buzzer identifier, this can be used in HAL function as GPIO, PIN \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{panic__buzzer_8h_a9b81d88f458591b9c52e806883132017}{panic\+\_\+buzzer\+\_\+start}} ()
+\begin{DoxyCompactList}\small\item\em Make the panic buzzer start making noise. \end{DoxyCompactList}\item 
+\Hypertarget{panic__buzzer_8h_ac86fbae8b6579fa772c0653bd0d2b86a}\label{panic__buzzer_8h_ac86fbae8b6579fa772c0653bd0d2b86a} 
+void {\bfseries panic\+\_\+buzzer\+\_\+stop} ()
+\begin{DoxyCompactList}\small\item\em Make the panic buzzer stop making noise. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{panic__buzzer_8h_afb1009f3f90fe4469b65b17d7d301a0d}{panic\+\_\+buzzer\+\_\+is\+\_\+active}} ()
+\begin{DoxyCompactList}\small\item\em This function is used to acknowledge if the panic buzzer is currently making noise. \end{DoxyCompactList}\item 
+\Hypertarget{panic__buzzer_8h_a6152325e5b8bdb602e3627c6fc32313d}\label{panic__buzzer_8h_a6152325e5b8bdb602e3627c6fc32313d} 
+uint8\+\_\+t {\bfseries panic\+\_\+buzzer\+\_\+get\+\_\+counter} ()
+\begin{DoxyCompactList}\small\item\em Returns how many times the panic buzzer has emitted some noise, this value is in \mbox{[}0-\/5\mbox{]}. \end{DoxyCompactList}\item 
+\Hypertarget{panic__buzzer_8h_a6ab7f8360e8542f11e91a208679f0994}\label{panic__buzzer_8h_a6ab7f8360e8542f11e91a208679f0994} 
+void {\bfseries panic\+\_\+buzzer\+\_\+reset\+\_\+counter} ()
+\begin{DoxyCompactList}\small\item\em This function is used to set the buzzer counter back to 0. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the necessary functions to make the panic buzzer work. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{panic__buzzer_8h_afb1009f3f90fe4469b65b17d7d301a0d}\label{panic__buzzer_8h_afb1009f3f90fe4469b65b17d7d301a0d} 
+\index{panic\_buzzer.h@{panic\_buzzer.h}!panic\_buzzer\_is\_active@{panic\_buzzer\_is\_active}}
+\index{panic\_buzzer\_is\_active@{panic\_buzzer\_is\_active}!panic\_buzzer.h@{panic\_buzzer.h}}
+\doxysubsubsection{\texorpdfstring{panic\_buzzer\_is\_active()}{panic\_buzzer\_is\_active()}}
+{\footnotesize\ttfamily uint8\+\_\+t panic\+\_\+buzzer\+\_\+is\+\_\+active (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function is used to acknowledge if the panic buzzer is currently making noise. 
+
+\begin{DoxyReturn}{Returns}
+1 if it is making noise 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{panic__buzzer_8h_a9b81d88f458591b9c52e806883132017}\label{panic__buzzer_8h_a9b81d88f458591b9c52e806883132017} 
+\index{panic\_buzzer.h@{panic\_buzzer.h}!panic\_buzzer\_start@{panic\_buzzer\_start}}
+\index{panic\_buzzer\_start@{panic\_buzzer\_start}!panic\_buzzer.h@{panic\_buzzer.h}}
+\doxysubsubsection{\texorpdfstring{panic\_buzzer\_start()}{panic\_buzzer\_start()}}
+{\footnotesize\ttfamily void panic\+\_\+buzzer\+\_\+start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Make the panic buzzer start making noise. 
+
+Used to keep count of how many times the buzzer has been turned on 

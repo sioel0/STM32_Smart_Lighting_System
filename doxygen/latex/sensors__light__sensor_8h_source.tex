@@ -1,0 +1,38 @@
+\doxysection{sensors\+\_\+light\+\_\+sensor.\+h}
+\hypertarget{sensors__light__sensor_8h_source}{}\label{sensors__light__sensor_8h_source}\index{Drivers/Custom/Sensors/Include/sensors\_light\_sensor.h@{Drivers/Custom/Sensors/Include/sensors\_light\_sensor.h}}
+\mbox{\hyperlink{sensors__light__sensor_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#ifndef\ CUSTOM\_SENSORS\_INCLUDE\_SENSORS\_LIGHT\_SENSOR\_H\_}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ CUSTOM\_SENSORS\_INCLUDE\_SENSORS\_LIGHT\_SENSOR\_H\_}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{stm32f4xx__hal_8h}{stm32f4xx\_hal.h}}"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ \mbox{\hyperlink{structADC__HandleTypeDef}{ADC\_HandleTypeDef}}\ hadc1;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ SENSORS\_LIGHT\_SENSOR\_ADC\ \&hadc1\ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ SENSORS\_LIGHT\_SENSOR\_INACTIVE\ 0x11111111\ }}
+\DoxyCodeLine{00017\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00018\ \textcolor{comment}{\ *\ @brief\ Reads\ current\ ambient\ light\ level\ from\ the\ sensor}}
+\DoxyCodeLine{00019\ \textcolor{comment}{\ *\ return\ current\ ambient\ light\ level}}
+\DoxyCodeLine{00020\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00021\ uint32\_t\ sensors\_light\_get\_ambient\_light\_level();}
+\DoxyCodeLine{00022\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00023\ \textcolor{comment}{\ *\ @brief\ Sets\ the\ light\_sensor\_active\ variable\ to\ 1\ telling\ that\ it\ is\ possible\ to\ check\ the\ light\ intensity\ value}}
+\DoxyCodeLine{00024\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ sensors\_light\_sensor\_start();}
+\DoxyCodeLine{00026\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00027\ \textcolor{comment}{\ *\ @brief\ Sets\ the\ light\_sensor\_active\ variable\ to\ 0\ telling\ that\ it\ is\ not\ possible\ to\ check\ the\ light\ intensity\ value}}
+\DoxyCodeLine{00028\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}\ sensors\_light\_sensor\_stop();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00032\ \textcolor{comment}{\ *\ @brief\ This\ fucntion\ is\ used\ to\ acknowledge\ if\ the\ ambient\ sensor\ is\ currently\ working}}
+\DoxyCodeLine{00033\ \textcolor{comment}{\ *\ @return\ 1\ if\ it\ is\ active\ 0\ otherwise}}
+\DoxyCodeLine{00034\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{00035\ uint8\_t\ sensors\_light\_sensor\_is\_active();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CUSTOM\_SENSORS\_INCLUDE\_SENSORS\_LIGHT\_SENSOR\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -25,7 +25,6 @@ SUBDIRS := \
 Core/Src \
 Core/Startup \
 Drivers/Custom/Comm/Src \
-Drivers/Custom/Error/Src \
 Drivers/Custom/Lights/Src \
 Drivers/Custom/Panic/Src \
 Drivers/Custom/Sensors/Src \

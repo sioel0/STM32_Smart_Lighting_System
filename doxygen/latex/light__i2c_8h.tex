@@ -1,0 +1,421 @@
+\doxysection{Drivers/\+Custom/\+Lights/\+Include/light\+\_\+i2c.h File Reference}
+\hypertarget{light__i2c_8h}{}\label{light__i2c_8h}\index{Drivers/Custom/Lights/Include/light\_i2c.h@{Drivers/Custom/Lights/Include/light\_i2c.h}}
+
+
+This file contains the low level i2c driver for the light matrix To better understand how everything works refer to the light matrix documentation which can be found \href{https://learn.adafruit.com/system/assets/assets/000/030/994/original/31FL3731.pdf?1457554773}{\texttt{ here}}  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{light__i2c_8h_a106bb4f9baa9a90ba7bcf6e306e6382e}\label{light__i2c_8h_a106bb4f9baa9a90ba7bcf6e306e6382e} 
+\#define {\bfseries LIGHT\+\_\+\+MATRIX\+\_\+\+ADDR}~0x74$<$$<$1 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Light matrix address with 1 bit left shift \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a58fec41b2f08cdcfecfd204a096adadd}\label{light__i2c_8h_a58fec41b2f08cdcfecfd204a096adadd} 
+\#define {\bfseries LIGHT\+\_\+\+I2\+C\+\_\+\+INTERFACE}~\&hi2c1 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} i2c interface used to communicate with the led matrix \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a249b4cc8a854fe6dc7ab568c2f8d2fa3}\label{light__i2c_8h_a249b4cc8a854fe6dc7ab568c2f8d2fa3} 
+\#define {\bfseries COMMAND\+\_\+\+REGISTER}~0x\+FD /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Command register address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a3cfb90ebde73b93617a44f2fb37ad8d1}\label{light__i2c_8h_a3cfb90ebde73b93617a44f2fb37ad8d1} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME1}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 1 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ad25d6af99b2e482a964e0bf58baa4fac}\label{light__i2c_8h_ad25d6af99b2e482a964e0bf58baa4fac} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME2}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 2 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a9d7b26d6df748fa5f797ce20fa591044}\label{light__i2c_8h_a9d7b26d6df748fa5f797ce20fa591044} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME3}~0x02 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 3 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_aac6e04e7d49340d279cf1e5f6581e406}\label{light__i2c_8h_aac6e04e7d49340d279cf1e5f6581e406} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME4}~0x03 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 4 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_aeba3df58a317f88d91b613ae796c2ec8}\label{light__i2c_8h_aeba3df58a317f88d91b613ae796c2ec8} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME5}~0x04 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 5 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a12d0930f454696a6314dec4ad12099f7}\label{light__i2c_8h_a12d0930f454696a6314dec4ad12099f7} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME6}~0x05 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 6 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a2b2a9466b61f3d6af3620f697d223f4a}\label{light__i2c_8h_a2b2a9466b61f3d6af3620f697d223f4a} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME7}~0x06 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 7 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a039c29871097e4656e0f6543134c8d1b}\label{light__i2c_8h_a039c29871097e4656e0f6543134c8d1b} 
+\#define {\bfseries MATRIX\+\_\+\+FRAME8}~0x07 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame 8 address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a4ea5f8daea2816391bd34a34ccd6a16d}\label{light__i2c_8h_a4ea5f8daea2816391bd34a34ccd6a16d} 
+\#define {\bfseries MATRIX\+\_\+\+FUNCTION\+\_\+\+REGISTER}~0x0B /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} matrix function register \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a3ca793055b712cd016c088ee1dca0449}\label{light__i2c_8h_a3ca793055b712cd016c088ee1dca0449} 
+\#define {\bfseries LED\+\_\+\+CONTROL\+\_\+\+START}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} First led control register, 1 bit per led \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ae314ed6fa1788c66582d4474aef9e3e3}\label{light__i2c_8h_ae314ed6fa1788c66582d4474aef9e3e3} 
+\#define {\bfseries LED\+\_\+\+CONTROL\+\_\+\+END}~0x11 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Last led control register \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ae02ddee8331c1d98179d40f1732ca907}\label{light__i2c_8h_ae02ddee8331c1d98179d40f1732ca907} 
+\#define {\bfseries BLINK\+\_\+\+CONTROL\+\_\+\+START}~0x12 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} First blink control register, 1 bit per led \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a334a0bdd3560c41086058405178915ce}\label{light__i2c_8h_a334a0bdd3560c41086058405178915ce} 
+\#define {\bfseries BLINK\+\_\+\+CONTROL\+\_\+\+END}~0x23 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Last blink control register \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a75d1ca435e8310a825060596b07906c2}\label{light__i2c_8h_a75d1ca435e8310a825060596b07906c2} 
+\#define {\bfseries PWM\+\_\+\+CONTROL\+\_\+\+START}~0x24 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} First pwm control register, 8 bit per led \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a5160ad032bb8208baa17ad0488d60d7f}\label{light__i2c_8h_a5160ad032bb8208baa17ad0488d60d7f} 
+\#define {\bfseries PWM\+\_\+\+CONTROL\+\_\+\+END}~0x\+B3 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Last pwm control register \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a7ee3d94a0cd2d145d66bae6abe5bb302}\label{light__i2c_8h_a7ee3d94a0cd2d145d66bae6abe5bb302} 
+\#define {\bfseries CONFIGURATION\+\_\+\+REGISTER}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Configuration register address \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a82fc9b83b358b2d542d1cba8e40917da}\label{light__i2c_8h_a82fc9b83b358b2d542d1cba8e40917da} 
+\#define {\bfseries PICTURE\+\_\+\+MODE}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable picture mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ada56ef4920003d3f337531332e180170}\label{light__i2c_8h_ada56ef4920003d3f337531332e180170} 
+\#define {\bfseries AUTOFRAME\+\_\+\+MODE}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable autoframe mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a2507637f1c51da532f78d798a7e57b45}\label{light__i2c_8h_a2507637f1c51da532f78d798a7e57b45} 
+\#define {\bfseries AUDIOFRAME\+\_\+\+MODE}~0x10 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable audioframe mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_aa43a1e816549377adeaac11ea37be69e}\label{light__i2c_8h_aa43a1e816549377adeaac11ea37be69e} 
+\#define {\bfseries AUTOPLAY\+\_\+\+MODE}(mode,  fs)~0x00\texorpdfstring{$\vert$}{|}((mode$<$$<$3)\texorpdfstring{$\vert$}{|}(fs))
+\item 
+\Hypertarget{light__i2c_8h_a3ae5638eba0abe78ce556d0f4b3fd972}\label{light__i2c_8h_a3ae5638eba0abe78ce556d0f4b3fd972} 
+\#define {\bfseries PICTURE\+\_\+\+DISPLAY\+\_\+\+REGISTER}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Picture display configuration register, this register is important only in picture mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_abebf186b40fd7fea77fadcdc0efc98c9}\label{light__i2c_8h_abebf186b40fd7fea77fadcdc0efc98c9} 
+\#define {\bfseries PICTURE\+\_\+\+MODE\+\_\+\+FRAME}(pfs)~pfs /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Setup which frame should be shown in picture mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ae2b5d013cc45b0d6a52c203a98a3cef2}\label{light__i2c_8h_ae2b5d013cc45b0d6a52c203a98a3cef2} 
+\#define {\bfseries AUTOPLAY\+\_\+\+CONTROL\+\_\+\+REGISTER1}~0x02 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Autoplay configuration register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}}(cns,  fns)~0x00\texorpdfstring{$\vert$}{|}((cns$<$$<$4)\texorpdfstring{$\vert$}{|}(fns))
+\begin{DoxyCompactList}\small\item\em Autoplay configuration generator. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_a7811eef71f0a03624cabd544827f34ee}\label{light__i2c_8h_a7811eef71f0a03624cabd544827f34ee} 
+\#define {\bfseries ENDLESS\+\_\+\+ALLFRAME}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for all frame and endless loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ac4f2c8233a16607a57a17b58c0e3d182}\label{light__i2c_8h_ac4f2c8233a16607a57a17b58c0e3d182} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES1}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 1 frame and 1 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ab6d9695eee700497e4b069084429f2cd}\label{light__i2c_8h_ab6d9695eee700497e4b069084429f2cd} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES2}~0x02 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 2 frame and 2 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_abe5d17e3d15fac82ee5b0c20338db45f}\label{light__i2c_8h_abe5d17e3d15fac82ee5b0c20338db45f} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES3}~0x03 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 3 frame and 3 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a3e276bab818dd7ece19278278067befc}\label{light__i2c_8h_a3e276bab818dd7ece19278278067befc} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES4}~0x04 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 4 frame and 4 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a52ce4f0cda880f8544e2f8dcf1f8da1a}\label{light__i2c_8h_a52ce4f0cda880f8544e2f8dcf1f8da1a} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES5}~0x05 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 5 frame and 5 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a697c328aae2986307c24dc04029fbdf6}\label{light__i2c_8h_a697c328aae2986307c24dc04029fbdf6} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES6}~0x06 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 6 frame and 6 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a95ee3eea3babebe1da66196ec9b848d3}\label{light__i2c_8h_a95ee3eea3babebe1da66196ec9b848d3} 
+\#define {\bfseries LOOPS\+\_\+\+FRAMES7}~0x07 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} This is used both for 7 frame and 7 loop in @ref \mbox{\hyperlink{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}{AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG}} \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a1d3fea47b065c32be1d827dc4cb6e10a}\label{light__i2c_8h_a1d3fea47b065c32be1d827dc4cb6e10a} 
+\#define {\bfseries AUTOPLAY\+\_\+\+CONTROL\+\_\+\+REGISTER2}~0x03 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Delay autoplay configuration register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_aa3d3fd10afcb36f90c1eadb08f529ab3}{AUTOPLAY\+\_\+\+DELAY\+\_\+\+CONFIG}}(a)~a
+\begin{DoxyCompactList}\small\item\em Autoplay delay configuration generator. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_adb608e6e52a2b140ba73812baa9ed5d0}\label{light__i2c_8h_adb608e6e52a2b140ba73812baa9ed5d0} 
+\#define {\bfseries DISPLAY\+\_\+\+OPTION\+\_\+\+REGISTER}~0x05 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Display option register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_a28377a4ecc2db985f772c768ca6598be}{DISPLAY\+\_\+\+OPTIONS}}(ic,  be,  a)~0x00\texorpdfstring{$\vert$}{|}((ic$<$$<$5)\texorpdfstring{$\vert$}{|}(be$<$$<$3)\texorpdfstring{$\vert$}{|}(a))
+\begin{DoxyCompactList}\small\item\em Display configuration options generator. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_a364a59f0d13de029278243a7bcf0d298}\label{light__i2c_8h_a364a59f0d13de029278243a7bcf0d298} 
+\#define {\bfseries INDEPENDENT\+\_\+\+INTENSITY}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Set each frame intensity independently \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a5ac2959b4d4f5f9506939e18696d0eab}\label{light__i2c_8h_a5ac2959b4d4f5f9506939e18696d0eab} 
+\#define {\bfseries SAME\+\_\+\+INTENSITY\+\_\+\+ALL\+\_\+\+FRAMES}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Every frame has the same led intensity ad any other frame \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a859f0390175f9485005f7fc6402f22d6}\label{light__i2c_8h_a859f0390175f9485005f7fc6402f22d6} 
+\#define {\bfseries BLINK\+\_\+\+DISABLED}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Disable blinking \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_adb7612a9fb982ae062a1edeca0106e92}\label{light__i2c_8h_adb7612a9fb982ae062a1edeca0106e92} 
+\#define {\bfseries BLINK\+\_\+\+ENABLED}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable blinking \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a13f2cd06351eceed0051fdeca73a6bbc}\label{light__i2c_8h_a13f2cd06351eceed0051fdeca73a6bbc} 
+\#define {\bfseries AUDIO\+\_\+\+SYNC\+\_\+\+REGISTER}~0x06 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Audio synchronisation register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_a5e8c42bcda49261f2a724aa1434339f6}{AUDIO\+\_\+\+SYNC\+\_\+\+CONFIG}}(ae)~ae
+\begin{DoxyCompactList}\small\item\em Audio sync mode configuration register. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_a63d7570688ccf0851f49bb5bdb8e0f7a}\label{light__i2c_8h_a63d7570688ccf0851f49bb5bdb8e0f7a} 
+\#define {\bfseries AUDIO\+\_\+\+SYNC\+\_\+\+DISABLED}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Disable audio sync mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a6eac77bc0d643a31fa2dd2cace596a36}\label{light__i2c_8h_a6eac77bc0d643a31fa2dd2cace596a36} 
+\#define {\bfseries AUDIO\+\_\+\+SYNC\+\_\+\+ENABLED}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable audio sync mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ae9422919cf2283114ffcc45513aaaed0}\label{light__i2c_8h_ae9422919cf2283114ffcc45513aaaed0} 
+\#define {\bfseries FRAME\+\_\+\+STATE\+\_\+\+REGISTER}~0x07 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Frame state register which is read\+\_\+only and can be used to get current display configuration \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_aaebb933c81c1e01cdccad271f2e6ab1f}\label{light__i2c_8h_aaebb933c81c1e01cdccad271f2e6ab1f} 
+\#define {\bfseries BREATH\+\_\+\+CONTROL\+\_\+\+REGISTER1}~0x08 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Breath control register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_a3e984d3bfcb060c127f7f28b32cc90db}{FADE\+\_\+\+TIMEOUT}}(a,  b)~0x00\texorpdfstring{$\vert$}{|}((a$<$$<$4)\texorpdfstring{$\vert$}{|}b)
+\begin{DoxyCompactList}\small\item\em Breath control configuration generator. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_a0f28ee6913f4f86a1dc433dc6f6a87a5}\label{light__i2c_8h_a0f28ee6913f4f86a1dc433dc6f6a87a5} 
+\#define {\bfseries BREATH\+\_\+\+CONTROL\+\_\+\+REGISTER2}~0x09 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Breath configuration register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_ab83aeec3e67798270b6d04ce2d1e5ae6}{BREATH\+\_\+\+FUNCTION\+\_\+\+CONFIG}}(b\+\_\+en,  a)~0x00\texorpdfstring{$\vert$}{|}((b\+\_\+en$<$$<$4)\texorpdfstring{$\vert$}{|}a)
+\begin{DoxyCompactList}\small\item\em Breath configuration generator. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_aae8e2619ef94cfb35a402ee776a4e219}\label{light__i2c_8h_aae8e2619ef94cfb35a402ee776a4e219} 
+\#define {\bfseries BREATH\+\_\+\+DISABLED}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Disable breath animation \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ac8ae60a4224c32c62f083d01532686e9}\label{light__i2c_8h_ac8ae60a4224c32c62f083d01532686e9} 
+\#define {\bfseries BREATH\+\_\+\+ENABLED}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable breath animation \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a24611482fa35615e68397e521cd329d8}\label{light__i2c_8h_a24611482fa35615e68397e521cd329d8} 
+\#define {\bfseries SHUTDOWN\+\_\+\+REGISTER}~0x0A /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Shutdown register \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a3b61478edd7c1b25c8facd2907cf6c33}\label{light__i2c_8h_a3b61478edd7c1b25c8facd2907cf6c33} 
+\#define {\bfseries SHUTDOWN}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Turn off the led matrix \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a96701203b8a7febc3b53a7eede64433d}\label{light__i2c_8h_a96701203b8a7febc3b53a7eede64433d} 
+\#define {\bfseries TURN\+\_\+\+ON}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Turn on the led matrix \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a6898a73b151400ccfe8678db5c2745ab}\label{light__i2c_8h_a6898a73b151400ccfe8678db5c2745ab} 
+\#define {\bfseries AGC\+\_\+\+CONTROL\+\_\+\+REGISTER}~0x0B /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} AGC control register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_a2fb2d5dde847e95125c1351a7cbc675c}{AGC\+\_\+\+CONFIG}}(agcm,  agc,  ags)~0x00\texorpdfstring{$\vert$}{|}((agcm$<$$<$4)\texorpdfstring{$\vert$}{|}(agc$<$$<$3)\texorpdfstring{$\vert$}{|}ags)
+\begin{DoxyCompactList}\small\item\em AGC configuration generator. \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_abbb0133dfda79533c450b09a0abf5ca9}\label{light__i2c_8h_abbb0133dfda79533c450b09a0abf5ca9} 
+\#define {\bfseries AGC\+\_\+\+MODE\+\_\+\+SLOW}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Agc slow mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_aac0620356e5004005a4cfc60c61b681b}\label{light__i2c_8h_aac0620356e5004005a4cfc60c61b681b} 
+\#define {\bfseries AGC\+\_\+\+MODE\+\_\+\+FAST}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Agc fast mode \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_a4dbf387f242e9f21457140aa2da88eb5}\label{light__i2c_8h_a4dbf387f242e9f21457140aa2da88eb5} 
+\#define {\bfseries AGC\+\_\+\+DISABLED}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Disable agc \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_aeb61418a629593a39ba7bbb259c853c7}\label{light__i2c_8h_aeb61418a629593a39ba7bbb259c853c7} 
+\#define {\bfseries AGC\+\_\+\+ENABLED}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Enable agc \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light__i2c_8h_ab2de9e9dfe98d90905830855fa3dc357}\label{light__i2c_8h_ab2de9e9dfe98d90905830855fa3dc357} 
+\#define {\bfseries AUDIO\+\_\+\+ADC\+\_\+\+RATE\+\_\+\+REGISTER}~0x0C/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Audio ADC rate register \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light__i2c_8h_a87ed3f3ba466ce756694209f28f72d80}{ADC\+\_\+\+CONFIG}}(a)~a
+\begin{DoxyCompactList}\small\item\em ADC configuration generator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{light__i2c_8h_a9ec9f09a9e67ee397a7c285c5e8208c0}{light\+\_\+i2c\+\_\+select\+\_\+page}} (uint8\+\_\+t page)
+\begin{DoxyCompactList}\small\item\em this function is used to select which destination frame of the following data \end{DoxyCompactList}\item 
+\mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}} \mbox{\hyperlink{light__i2c_8h_aefaafdf4ca0688a7527c8aea7fceae01}{light\+\_\+i2c\+\_\+write\+\_\+single\+\_\+register}} (uint8\+\_\+t page, uint8\+\_\+t reg, uint8\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em this function is used to write the given value to the given register \end{DoxyCompactList}\item 
+\Hypertarget{light__i2c_8h_a480eaf33cab0dcde6b043c7928e1baff}\label{light__i2c_8h_a480eaf33cab0dcde6b043c7928e1baff} 
+\mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}} {\bfseries light\+\_\+i2c\+\_\+send\+\_\+data} (uint8\+\_\+t page, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t data\+\_\+len)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{light__i2c_8h_af7b2c26e44dadaaa798a5c3d82914ba7}\label{light__i2c_8h_af7b2c26e44dadaaa798a5c3d82914ba7} 
+\mbox{\hyperlink{structI2C__HandleTypeDef}{I2\+C\+\_\+\+Handle\+Type\+Def}} {\bfseries hi2c1}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the low level i2c driver for the light matrix To better understand how everything works refer to the light matrix documentation which can be found \href{https://learn.adafruit.com/system/assets/assets/000/030/994/original/31FL3731.pdf?1457554773}{\texttt{ here}} 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{light__i2c_8h_a87ed3f3ba466ce756694209f28f72d80}\label{light__i2c_8h_a87ed3f3ba466ce756694209f28f72d80} 
+\index{light\_i2c.h@{light\_i2c.h}!ADC\_CONFIG@{ADC\_CONFIG}}
+\index{ADC\_CONFIG@{ADC\_CONFIG}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{ADC\_CONFIG}{ADC\_CONFIG}}
+{\footnotesize\ttfamily \#define ADC\+\_\+\+CONFIG(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~a}
+
+
+
+ADC configuration generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & audio adc rate, the adc rate will be set to T\texorpdfstring{$\ast$}{*}a with T\texorpdfstring{$\sim$}{\string~}46us and a in \mbox{[}0-\/255\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{light__i2c_8h_a2fb2d5dde847e95125c1351a7cbc675c}\label{light__i2c_8h_a2fb2d5dde847e95125c1351a7cbc675c} 
+\index{light\_i2c.h@{light\_i2c.h}!AGC\_CONFIG@{AGC\_CONFIG}}
+\index{AGC\_CONFIG@{AGC\_CONFIG}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{AGC\_CONFIG}{AGC\_CONFIG}}
+{\footnotesize\ttfamily \#define AGC\+\_\+\+CONFIG(\begin{DoxyParamCaption}\item[{}]{agcm,  }\item[{}]{agc,  }\item[{}]{ags }\end{DoxyParamCaption})~0x00\texorpdfstring{$\vert$}{|}((agcm$<$$<$4)\texorpdfstring{$\vert$}{|}(agc$<$$<$3)\texorpdfstring{$\vert$}{|}ags)}
+
+
+
+AGC configuration generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em agcm} & agc mode, it can be either AGC\+\_\+\+MODE\+\_\+\+SLOW or AGC\+\_\+\+MODE\+\_\+\+FAST \\
+\hline
+{\em agc} & agc enable, it cna be either AGC\+\_\+\+DISABLED or AGC\+\_\+\+ENABLED \\
+\hline
+{\em ags} & audio gain selection which can be any value in \mbox{[}0-\/7\mbox{]} and sets the audio gain to 3db\texorpdfstring{$\ast$}{*}ags \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a control 
+\end{DoxyReturn}
+\Hypertarget{light__i2c_8h_a5e8c42bcda49261f2a724aa1434339f6}\label{light__i2c_8h_a5e8c42bcda49261f2a724aa1434339f6} 
+\index{light\_i2c.h@{light\_i2c.h}!AUDIO\_SYNC\_CONFIG@{AUDIO\_SYNC\_CONFIG}}
+\index{AUDIO\_SYNC\_CONFIG@{AUDIO\_SYNC\_CONFIG}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{AUDIO\_SYNC\_CONFIG}{AUDIO\_SYNC\_CONFIG}}
+{\footnotesize\ttfamily \#define AUDIO\+\_\+\+SYNC\+\_\+\+CONFIG(\begin{DoxyParamCaption}\item[{}]{ae }\end{DoxyParamCaption})~ae}
+
+
+
+Audio sync mode configuration register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ae} & audio synchronisation enable, it can be either AUDIO\+\_\+\+SYNC\+\_\+\+DISABLED or AUDIO\+\_\+\+SYNC\+\_\+\+ENABLED \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bit mask representing the desired configuration 
+\end{DoxyReturn}
+\Hypertarget{light__i2c_8h_aa3d3fd10afcb36f90c1eadb08f529ab3}\label{light__i2c_8h_aa3d3fd10afcb36f90c1eadb08f529ab3} 
+\index{light\_i2c.h@{light\_i2c.h}!AUTOPLAY\_DELAY\_CONFIG@{AUTOPLAY\_DELAY\_CONFIG}}
+\index{AUTOPLAY\_DELAY\_CONFIG@{AUTOPLAY\_DELAY\_CONFIG}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{AUTOPLAY\_DELAY\_CONFIG}{AUTOPLAY\_DELAY\_CONFIG}}
+{\footnotesize\ttfamily \#define AUTOPLAY\+\_\+\+DELAY\+\_\+\+CONFIG(\begin{DoxyParamCaption}\item[{}]{a }\end{DoxyParamCaption})~a}
+
+
+
+Autoplay delay configuration generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & frame delay time, it can be any value in \mbox{[}1-\/63\mbox{]} where the delay will be T\texorpdfstring{$\ast$}{*}a with T\texorpdfstring{$\sim$}{\string~}11ms \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bit mask representing the desired configuration 
+\end{DoxyReturn}
+\Hypertarget{light__i2c_8h_a9b5e2de8df018857b3717082537bc518}\label{light__i2c_8h_a9b5e2de8df018857b3717082537bc518} 
+\index{light\_i2c.h@{light\_i2c.h}!AUTOPLAY\_MODE\_CONFIG@{AUTOPLAY\_MODE\_CONFIG}}
+\index{AUTOPLAY\_MODE\_CONFIG@{AUTOPLAY\_MODE\_CONFIG}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{AUTOPLAY\_MODE\_CONFIG}{AUTOPLAY\_MODE\_CONFIG}}
+{\footnotesize\ttfamily \#define AUTOPLAY\+\_\+\+MODE\+\_\+\+CONFIG(\begin{DoxyParamCaption}\item[{}]{cns,  }\item[{}]{fns }\end{DoxyParamCaption})~0x00\texorpdfstring{$\vert$}{|}((cns$<$$<$4)\texorpdfstring{$\vert$}{|}(fns))}
+
+
+
+Autoplay configuration generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cns} & number of loops to which the animation should perform \\
+\hline
+{\em fns} & number of frame which will take part to the animation \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bit mask representing the defined configuration 
+\end{DoxyReturn}
+\Hypertarget{light__i2c_8h_ab83aeec3e67798270b6d04ce2d1e5ae6}\label{light__i2c_8h_ab83aeec3e67798270b6d04ce2d1e5ae6} 
+\index{light\_i2c.h@{light\_i2c.h}!BREATH\_FUNCTION\_CONFIG@{BREATH\_FUNCTION\_CONFIG}}
+\index{BREATH\_FUNCTION\_CONFIG@{BREATH\_FUNCTION\_CONFIG}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{BREATH\_FUNCTION\_CONFIG}{BREATH\_FUNCTION\_CONFIG}}
+{\footnotesize\ttfamily \#define BREATH\+\_\+\+FUNCTION\+\_\+\+CONFIG(\begin{DoxyParamCaption}\item[{}]{b\+\_\+en,  }\item[{}]{a }\end{DoxyParamCaption})~0x00\texorpdfstring{$\vert$}{|}((b\+\_\+en$<$$<$4)\texorpdfstring{$\vert$}{|}a)}
+
+
+
+Breath configuration generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em b\+\_\+en} & breath enable, can be either BREATH\+\_\+\+DISABLED or BREATH\+\_\+\+ENABLED \\
+\hline
+{\em a} & extinguish time configuration, it can be any value in \mbox{[}0-\/7\mbox{]}, the amount of time will be T\texorpdfstring{$\ast$}{*}2\texorpdfstring{$^\wedge$}{\string^}a \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bit mask representing the desired configuration 
+\end{DoxyReturn}
+\Hypertarget{light__i2c_8h_a28377a4ecc2db985f772c768ca6598be}\label{light__i2c_8h_a28377a4ecc2db985f772c768ca6598be} 
+\index{light\_i2c.h@{light\_i2c.h}!DISPLAY\_OPTIONS@{DISPLAY\_OPTIONS}}
+\index{DISPLAY\_OPTIONS@{DISPLAY\_OPTIONS}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{DISPLAY\_OPTIONS}{DISPLAY\_OPTIONS}}
+{\footnotesize\ttfamily \#define DISPLAY\+\_\+\+OPTIONS(\begin{DoxyParamCaption}\item[{}]{ic,  }\item[{}]{be,  }\item[{}]{a }\end{DoxyParamCaption})~0x00\texorpdfstring{$\vert$}{|}((ic$<$$<$5)\texorpdfstring{$\vert$}{|}(be$<$$<$3)\texorpdfstring{$\vert$}{|}(a))}
+
+
+
+Display configuration options generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ic} & intensity control it can be either INDEPENDENT\+\_\+\+INTENSIDTY or SAME\+\_\+\+INTENSITY\+\_\+\+ALL\+\_\+\+FRAMES \\
+\hline
+{\em be} & blink enable, it can be either BLINK\+\_\+\+DISABLED and BLINK\+\_\+\+ENABLED \\
+\hline
+{\em a} & blink period time, it can be any value in \mbox{[}1-\/63\mbox{]} where the delay will be T\texorpdfstring{$\ast$}{*}a with T\texorpdfstring{$\sim$}{\string~}11ms \\
+\hline
+\end{DoxyParams}
+\Hypertarget{light__i2c_8h_a3e984d3bfcb060c127f7f28b32cc90db}\label{light__i2c_8h_a3e984d3bfcb060c127f7f28b32cc90db} 
+\index{light\_i2c.h@{light\_i2c.h}!FADE\_TIMEOUT@{FADE\_TIMEOUT}}
+\index{FADE\_TIMEOUT@{FADE\_TIMEOUT}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{FADE\_TIMEOUT}{FADE\_TIMEOUT}}
+{\footnotesize\ttfamily \#define FADE\+\_\+\+TIMEOUT(\begin{DoxyParamCaption}\item[{}]{a,  }\item[{}]{b }\end{DoxyParamCaption})~0x00\texorpdfstring{$\vert$}{|}((a$<$$<$4)\texorpdfstring{$\vert$}{|}b)}
+
+
+
+Breath control configuration generator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & fade out time configuration, it can be any value in \mbox{[}0-\/7\mbox{]}, the amount of time will be T\texorpdfstring{$\ast$}{*}2\texorpdfstring{$^\wedge$}{\string^}a \\
+\hline
+{\em b} & fade in time configuration, it can be any value in \mbox{[}0-\/7\mbox{]}, the amount of time will be T\texorpdfstring{$\ast$}{*}2\texorpdfstring{$^\wedge$}{\string^}b \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a bit mask representing the desired configuration 
+\end{DoxyReturn}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{light__i2c_8h_a9ec9f09a9e67ee397a7c285c5e8208c0}\label{light__i2c_8h_a9ec9f09a9e67ee397a7c285c5e8208c0} 
+\index{light\_i2c.h@{light\_i2c.h}!light\_i2c\_select\_page@{light\_i2c\_select\_page}}
+\index{light\_i2c\_select\_page@{light\_i2c\_select\_page}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{light\_i2c\_select\_page()}{light\_i2c\_select\_page()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}} light\+\_\+i2c\+\_\+select\+\_\+page (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{page }\end{DoxyParamCaption})}
+
+
+
+this function is used to select which destination frame of the following data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em page} & the frame that needs to be selected \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return HAL\+\_\+\+OK if the page has been correctly selected HAL\+\_\+\+BUSY otherwise 
+\end{DoxyReturn}
+\Hypertarget{light__i2c_8h_aefaafdf4ca0688a7527c8aea7fceae01}\label{light__i2c_8h_aefaafdf4ca0688a7527c8aea7fceae01} 
+\index{light\_i2c.h@{light\_i2c.h}!light\_i2c\_write\_single\_register@{light\_i2c\_write\_single\_register}}
+\index{light\_i2c\_write\_single\_register@{light\_i2c\_write\_single\_register}!light\_i2c.h@{light\_i2c.h}}
+\doxysubsubsection{\texorpdfstring{light\_i2c\_write\_single\_register()}{light\_i2c\_write\_single\_register()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{stm32f4xx__hal__def_8h_a63c0679d1cb8b8c684fbb0632743478f}{HAL\+\_\+\+Status\+Type\+Def}} light\+\_\+i2c\+\_\+write\+\_\+single\+\_\+register (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{page,  }\item[{uint8\+\_\+t}]{reg,  }\item[{uint8\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+this function is used to write the given value to the given register 
+
+
+\begin{DoxyParams}{Parameters}
+{\em page} & the page containing the desired register \\
+\hline
+{\em reg} & the register address \\
+\hline
+{\em value} & the value that needs to be written in the given register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+return HAL\+\_\+\+OK if the page has been correctly written HAL\+\_\+\+BUSY otherwise 
+\end{DoxyReturn}

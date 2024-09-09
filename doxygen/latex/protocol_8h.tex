@@ -1,0 +1,86 @@
+\doxysection{Drivers/\+Custom/\+Comm/\+Include/protocol.h File Reference}
+\hypertarget{protocol_8h}{}\label{protocol_8h}\index{Drivers/Custom/Comm/Include/protocol.h@{Drivers/Custom/Comm/Include/protocol.h}}
+
+
+This file contains all the protocol related stuff, defines and functions to react to received data.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{protocol_8h_a1c866390f9e8566d9ee39b9dde3c2a16}\label{protocol_8h_a1c866390f9e8566d9ee39b9dde3c2a16} 
+\#define {\bfseries WC\+\_\+\+RESET\+\_\+\+GPIO}~GPIOD /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Wireless coprocessor reset gpio interface \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a996ef02e7e3c6213616f79cecb322bff}\label{protocol_8h_a996ef02e7e3c6213616f79cecb322bff} 
+\#define {\bfseries WC\+\_\+\+RESET\+\_\+\+PIN}~GPIO\+\_\+\+PIN\+\_\+12 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Wireless coprocessor reset pin \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a8b6524f0a2ebbf09a9fc072c82a87a0a}\label{protocol_8h_a8b6524f0a2ebbf09a9fc072c82a87a0a} 
+\#define {\bfseries WC\+\_\+\+RESET}~WC\+\_\+\+RESET\+\_\+\+GPIO, WC\+\_\+\+RESET\+\_\+\+PIN /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Wireless coprocessor reset identifier, it can be used in HAL functions to set GPIO and PIN parameters\texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a52202a9f2524e81517acaadba5516bcd}\label{protocol_8h_a52202a9f2524e81517acaadba5516bcd} 
+\#define {\bfseries PERIODIC\+\_\+\+PACKET}~0x50 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Periodic packet identifier \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_ad51087d303b2d0738a53ae7e96f97f76}\label{protocol_8h_ad51087d303b2d0738a53ae7e96f97f76} 
+\#define {\bfseries CMD\+\_\+\+PACKET}~0x51 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Command packet identifier \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_aafaf3e1fd49d0fc459d515d3c25e3c4e}\label{protocol_8h_aafaf3e1fd49d0fc459d515d3c25e3c4e} 
+\#define {\bfseries PANIC\+\_\+\+PACKET}~0x52 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic packet identifier \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a68de9030c39965958f08402f7d452ad9}\label{protocol_8h_a68de9030c39965958f08402f7d452ad9} 
+\#define {\bfseries NO\+\_\+\+DATA}~0x00 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Placeholder for all the packets that do not need any data ad second byte \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a802ce820dcb71b11256586c92abcf6dd}\label{protocol_8h_a802ce820dcb71b11256586c92abcf6dd} 
+\#define {\bfseries TRIGGER\+\_\+\+RESET}~0x01 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Reset triggering command packet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_ac13708550fd194bad7b218c4d931b092}\label{protocol_8h_ac13708550fd194bad7b218c4d931b092} 
+\#define {\bfseries TURN\+\_\+\+PANIC\+\_\+\+ON}~0x02 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic module activating packet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_ade993df27e7d932a3e2dde228d1beb79}\label{protocol_8h_ade993df27e7d932a3e2dde228d1beb79} 
+\#define {\bfseries TURN\+\_\+\+PANIC\+\_\+\+OFF}~0x04 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Panic module disabling packet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a3c85c1313f2a207bb12981fc156c193d}\label{protocol_8h_a3c85c1313f2a207bb12981fc156c193d} 
+\#define {\bfseries TURN\+\_\+\+LIGHT\+\_\+\+ON}~0x08 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Light activating packet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a44ecea5ca6e42d83a34bc6bd8cbd656e}\label{protocol_8h_a44ecea5ca6e42d83a34bc6bd8cbd656e} 
+\#define {\bfseries TURN\+\_\+\+LIGHT\+\_\+\+OFF}~0x10 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Light disabling packet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_abda711a04ae9159161bd884fe66b9d13}\label{protocol_8h_abda711a04ae9159161bd884fe66b9d13} 
+\#define {\bfseries TURN\+\_\+\+MVMT\+\_\+\+ON}~0x11 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Movement sensor activating packet \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{protocol_8h_a2a0e815a0a264d5a1bdf4625470896e6}\label{protocol_8h_a2a0e815a0a264d5a1bdf4625470896e6} 
+\#define {\bfseries TURN\+\_\+\+MVMT\+\_\+\+OFF}~0x12 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Movement sensor disabling packet \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{protocol_8h_af61425427a2fc11124a07cad5b487717}{protocol\+\_\+interpret\+\_\+cmd\+\_\+packet}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}packet, uint8\+\_\+t len)
+\begin{DoxyCompactList}\small\item\em This function is used to react to received data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the protocol related stuff, defines and functions to react to received data. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{protocol_8h_af61425427a2fc11124a07cad5b487717}\label{protocol_8h_af61425427a2fc11124a07cad5b487717} 
+\index{protocol.h@{protocol.h}!protocol\_interpret\_cmd\_packet@{protocol\_interpret\_cmd\_packet}}
+\index{protocol\_interpret\_cmd\_packet@{protocol\_interpret\_cmd\_packet}!protocol.h@{protocol.h}}
+\doxysubsubsection{\texorpdfstring{protocol\_interpret\_cmd\_packet()}{protocol\_interpret\_cmd\_packet()}}
+{\footnotesize\ttfamily void protocol\+\_\+interpret\+\_\+cmd\+\_\+packet (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{packet,  }\item[{uint8\+\_\+t}]{len }\end{DoxyParamCaption})}
+
+
+
+This function is used to react to received data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em packet} & data that needs to be analysed \\
+\hline
+{\em len} & length of the received data Since the only possible data that can be received are command packets, this functions is intended to react only to this type of packets, it is of course possible to send any type of data but it will not do anything. \\
+\hline
+\end{DoxyParams}

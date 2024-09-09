@@ -1,0 +1,160 @@
+\doxysection{Drivers/\+Custom/\+Lights/\+Include/light.h File Reference}
+\hypertarget{light_8h}{}\label{light_8h}\index{Drivers/Custom/Lights/Include/light.h@{Drivers/Custom/Lights/Include/light.h}}
+
+
+This file contains all the needed high level function for light module interaction.  
+
+
+{\ttfamily \#include "{}light\+\_\+i2c.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{light_8h_a6407f0377f38a7667ff981c5b9647053}\label{light_8h_a6407f0377f38a7667ff981c5b9647053} 
+\#define {\bfseries DEFAULT\+\_\+\+LIGHT\+\_\+\+INTENSITY}~100 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Default light intensity value \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{light_8h_a20d67b90cabe2c0429654913a18dd034}\label{light_8h_a20d67b90cabe2c0429654913a18dd034} 
+\#define {\bfseries MAX\+\_\+\+LIGHT\+\_\+\+INTENSITY}~255 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} Maximum light intensity value \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{light_8h_a203ad2f855690b455db9b2a636f107a4}{light\+\_\+set\+\_\+current\+\_\+intensity}}(i)~\mbox{\hyperlink{light_8h_ad91ac381ab3650d08417e772fb5e22c4}{light\+\_\+set\+\_\+intensity}}(MATRIX\+\_\+\+FRAME1, i)
+\begin{DoxyCompactList}\small\item\em Set current intensity of frame 1. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{light_8h_a2dfafb7428ae16053766342efd96f5ff}\label{light_8h_a2dfafb7428ae16053766342efd96f5ff} 
+void {\bfseries light\+\_\+power\+\_\+on} ()
+\begin{DoxyCompactList}\small\item\em Turn light on via SHUTDOWN\+\_\+\+REGISTER. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_af7d6773fa098443cfd7d617ea42baac8}\label{light_8h_af7d6773fa098443cfd7d617ea42baac8} 
+void {\bfseries light\+\_\+shutdown} ()
+\begin{DoxyCompactList}\small\item\em Turn light off via SHUTDOWN\+\_\+\+REGISTER. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{light_8h_af6ea3e5a5cc6bb0d5dd2036806d008c5}{light\+\_\+default\+\_\+state}} (uint8\+\_\+t intensity)
+\begin{DoxyCompactList}\small\item\em Turn light on in picture mode with a given light intensity. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_a5748eed7739cc435105ae2678c6cf87b}\label{light_8h_a5748eed7739cc435105ae2678c6cf87b} 
+void {\bfseries light\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em Initialise light module settings up all the frames. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{light_8h_aac841ba5611c3b93ffa2dcadd3a5e477}{light\+\_\+turn\+\_\+on\+\_\+frame}} (uint8\+\_\+t frame)
+\begin{DoxyCompactList}\small\item\em Turns on all the LEDs of a given frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{light_8h_ab3976022e47d4028d58faa0b3b2d8fc3}{light\+\_\+turn\+\_\+off\+\_\+frame}} (uint8\+\_\+t frame)
+\begin{DoxyCompactList}\small\item\em Turns off all the LEDs of a given frame. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{light_8h_ad91ac381ab3650d08417e772fb5e22c4}{light\+\_\+set\+\_\+intensity}} (uint8\+\_\+t frame, uint8\+\_\+t intensity)
+\begin{DoxyCompactList}\small\item\em Set light intensity of the given frame. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_a91550b3731168b305b89816b01cc0837}\label{light_8h_a91550b3731168b305b89816b01cc0837} 
+void {\bfseries light\+\_\+transition\+\_\+to\+\_\+max} ()
+\begin{DoxyCompactList}\small\item\em Activates a smooth transition to max intensity level. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{light_8h_a67471f7b563f096a6b009a038c35903e}{light\+\_\+is\+\_\+on}} ()
+\begin{DoxyCompactList}\small\item\em Yells if the light module is currently working or not. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_afefdbaea49a77f42f18fef8b7e4c65ab}\label{light_8h_afefdbaea49a77f42f18fef8b7e4c65ab} 
+void {\bfseries light\+\_\+activate} ()
+\begin{DoxyCompactList}\small\item\em Activates the component that make the light module work correctly. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_ad912d6aa52455721447fae1993b444cf}\label{light_8h_ad912d6aa52455721447fae1993b444cf} 
+void {\bfseries light\+\_\+deactivate} ()
+\begin{DoxyCompactList}\small\item\em Deactivates the component that make the light module work correctly. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_aef7d0079e37ddb668f12df344e48d2ac}\label{light_8h_aef7d0079e37ddb668f12df344e48d2ac} 
+void {\bfseries light\+\_\+level\+\_\+check} ()
+\begin{DoxyCompactList}\small\item\em Triggers the ambient light level check. \end{DoxyCompactList}\item 
+\Hypertarget{light_8h_a39865aff4c0ac7425e20433803a25b15}\label{light_8h_a39865aff4c0ac7425e20433803a25b15} 
+void {\bfseries light\+\_\+main} ()
+\begin{DoxyCompactList}\small\item\em Main cycle of the light module This function is the one that takes care of the normal operation of the light module it coordinates all the operations linked to the device sensors to make the light react to external data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains all the needed high level function for light module interaction. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{light_8h_a203ad2f855690b455db9b2a636f107a4}\label{light_8h_a203ad2f855690b455db9b2a636f107a4} 
+\index{light.h@{light.h}!light\_set\_current\_intensity@{light\_set\_current\_intensity}}
+\index{light\_set\_current\_intensity@{light\_set\_current\_intensity}!light.h@{light.h}}
+\doxysubsubsection{\texorpdfstring{light\_set\_current\_intensity}{light\_set\_current\_intensity}}
+{\footnotesize\ttfamily \#define light\+\_\+set\+\_\+current\+\_\+intensity(\begin{DoxyParamCaption}\item[{}]{i }\end{DoxyParamCaption})~\mbox{\hyperlink{light_8h_ad91ac381ab3650d08417e772fb5e22c4}{light\+\_\+set\+\_\+intensity}}(MATRIX\+\_\+\+FRAME1, i)}
+
+
+
+Set current intensity of frame 1. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & light intensity, it can be any value in \mbox{[}0-\/255\mbox{]} \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{light_8h_af6ea3e5a5cc6bb0d5dd2036806d008c5}\label{light_8h_af6ea3e5a5cc6bb0d5dd2036806d008c5} 
+\index{light.h@{light.h}!light\_default\_state@{light\_default\_state}}
+\index{light\_default\_state@{light\_default\_state}!light.h@{light.h}}
+\doxysubsubsection{\texorpdfstring{light\_default\_state()}{light\_default\_state()}}
+{\footnotesize\ttfamily void light\+\_\+default\+\_\+state (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{intensity }\end{DoxyParamCaption})}
+
+
+
+Turn light on in picture mode with a given light intensity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em intensity} & the desired light intensity level \\
+\hline
+\end{DoxyParams}
+\Hypertarget{light_8h_a67471f7b563f096a6b009a038c35903e}\label{light_8h_a67471f7b563f096a6b009a038c35903e} 
+\index{light.h@{light.h}!light\_is\_on@{light\_is\_on}}
+\index{light\_is\_on@{light\_is\_on}!light.h@{light.h}}
+\doxysubsubsection{\texorpdfstring{light\_is\_on()}{light\_is\_on()}}
+{\footnotesize\ttfamily uint8\+\_\+t light\+\_\+is\+\_\+on (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Yells if the light module is currently working or not. 
+
+\begin{DoxyReturn}{Returns}
+1 if the module light is working 0 otherwise 
+\end{DoxyReturn}
+\Hypertarget{light_8h_ad91ac381ab3650d08417e772fb5e22c4}\label{light_8h_ad91ac381ab3650d08417e772fb5e22c4} 
+\index{light.h@{light.h}!light\_set\_intensity@{light\_set\_intensity}}
+\index{light\_set\_intensity@{light\_set\_intensity}!light.h@{light.h}}
+\doxysubsubsection{\texorpdfstring{light\_set\_intensity()}{light\_set\_intensity()}}
+{\footnotesize\ttfamily void light\+\_\+set\+\_\+intensity (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{frame,  }\item[{uint8\+\_\+t}]{intensity }\end{DoxyParamCaption})}
+
+
+
+Set light intensity of the given frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & the selected frame \\
+\hline
+{\em intensity} & intensity level, it can be any value in \mbox{[}0-\/255\mbox{]} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{light_8h_ab3976022e47d4028d58faa0b3b2d8fc3}\label{light_8h_ab3976022e47d4028d58faa0b3b2d8fc3} 
+\index{light.h@{light.h}!light\_turn\_off\_frame@{light\_turn\_off\_frame}}
+\index{light\_turn\_off\_frame@{light\_turn\_off\_frame}!light.h@{light.h}}
+\doxysubsubsection{\texorpdfstring{light\_turn\_off\_frame()}{light\_turn\_off\_frame()}}
+{\footnotesize\ttfamily void light\+\_\+turn\+\_\+off\+\_\+frame (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{frame }\end{DoxyParamCaption})}
+
+
+
+Turns off all the LEDs of a given frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & the frame to deactivate \\
+\hline
+\end{DoxyParams}
+\Hypertarget{light_8h_aac841ba5611c3b93ffa2dcadd3a5e477}\label{light_8h_aac841ba5611c3b93ffa2dcadd3a5e477} 
+\index{light.h@{light.h}!light\_turn\_on\_frame@{light\_turn\_on\_frame}}
+\index{light\_turn\_on\_frame@{light\_turn\_on\_frame}!light.h@{light.h}}
+\doxysubsubsection{\texorpdfstring{light\_turn\_on\_frame()}{light\_turn\_on\_frame()}}
+{\footnotesize\ttfamily void light\+\_\+turn\+\_\+on\+\_\+frame (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{frame }\end{DoxyParamCaption})}
+
+
+
+Turns on all the LEDs of a given frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & the frame to activate \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,65 @@
+\doxysection{Drivers/\+Custom/\+Comm/\+Include/comm.h File Reference}
+\hypertarget{comm_8h}{}\label{comm_8h}\index{Drivers/Custom/Comm/Include/comm.h@{Drivers/Custom/Comm/Include/comm.h}}
+
+
+This file contains useful function which gives the opportunity to abstract the serial communication layer.  
+
+
+{\ttfamily \#include "{}stm32f4xx\+\_\+hal.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}protocol.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{comm_8h_ae94ef7267b1740a41b4afb4d80e3e781}\label{comm_8h_ae94ef7267b1740a41b4afb4d80e3e781} 
+\#define {\bfseries COMM\+\_\+\+UART\+\_\+\+INTERFACE}~\&huart2 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} uart interface used to interact with wireless coprocessor \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{comm_8h_a4d58ae1183d71b34c83f7a22bb724c98}\label{comm_8h_a4d58ae1183d71b34c83f7a22bb724c98} 
+\#define {\bfseries COMM\+\_\+\+TIMER}~\&htim11 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} 5 seconds timer used to send period packets \texorpdfstring{$\ast$}{*}/
+\item 
+\Hypertarget{comm_8h_aebdc7d8ca8e25ed8efc90bb88ef7ef5b}\label{comm_8h_aebdc7d8ca8e25ed8efc90bb88ef7ef5b} 
+\#define {\bfseries PACKET\+\_\+\+SIZE}~2 /\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} data packet size \texorpdfstring{$\ast$}{*}/
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{comm_8h_a1f010f1e9394b57c0a2a63d9330e7fd4}{comm\+\_\+send\+\_\+data}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em this function is used to send data via uart interface. \end{DoxyCompactList}\item 
+\Hypertarget{comm_8h_ab2d2bcb7314dc4ab3839b02daf45ab9c}\label{comm_8h_ab2d2bcb7314dc4ab3839b02daf45ab9c} 
+void {\bfseries comm\+\_\+init} ()
+\begin{DoxyCompactList}\small\item\em This function is used to initialise the communication module This function is used to make the period packet timer start and active the IRQ routine for uart data reception. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{comm_8h_aa9479c261d65eecedd3d9582f7f0f89c}\label{comm_8h_aa9479c261d65eecedd3d9582f7f0f89c} 
+\mbox{\hyperlink{group__UART__Exported__Types_ga5de4a49eb132735325e706f406c69d6e}{UART\+\_\+\+Handle\+Type\+Def}} {\bfseries huart2}
+\item 
+\Hypertarget{comm_8h_a2f22f985c4f33318fdcd4cc996623bf4}\label{comm_8h_a2f22f985c4f33318fdcd4cc996623bf4} 
+\mbox{\hyperlink{structTIM__HandleTypeDef}{TIM\+\_\+\+Handle\+Type\+Def}} {\bfseries htim11}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains useful function which gives the opportunity to abstract the serial communication layer. 
+
+\begin{DoxyAuthor}{Author}
+sioel0 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{comm_8h_a1f010f1e9394b57c0a2a63d9330e7fd4}\label{comm_8h_a1f010f1e9394b57c0a2a63d9330e7fd4} 
+\index{comm.h@{comm.h}!comm\_send\_data@{comm\_send\_data}}
+\index{comm\_send\_data@{comm\_send\_data}!comm.h@{comm.h}}
+\doxysubsubsection{\texorpdfstring{comm\_send\_data()}{comm\_send\_data()}}
+{\footnotesize\ttfamily void comm\+\_\+send\+\_\+data (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+this function is used to send data via uart interface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & the data that needs to be sent Since both the MCU and the coprocessor are able to work on fixed sized packet, it is assumed that the data length of param is PACKET\+\_\+\+SIZE \\
+\hline
+\end{DoxyParams}

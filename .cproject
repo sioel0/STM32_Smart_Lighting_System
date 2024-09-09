@@ -51,7 +51,6 @@
 									<listOptionValue builtIn="false" value="../Drivers/Custom/Comm/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/Custom/Lights/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/Custom/Panic/Include"/>
-									<listOptionValue builtIn="false" value="../Drivers/Custom/Error/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/Custom/Sensors/Include"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1571296880" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
@@ -129,6 +128,10 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/Custom/Comm/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/Custom/Lights/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/Custom/Panic/Include"/>
+									<listOptionValue builtIn="false" value="../Drivers/Custom/Sensors/Include"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.827663097" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -178,5 +181,12 @@
 			<autodiscovery enabled="false" problemReportingEnabled="true" selectedProfileId=""/>
 		</scannerConfigBuildInfo>
 	</storageModule>
-	<storageModule moduleId="refreshScope"/>
+	<storageModule moduleId="refreshScope" versionNumber="2">
+		<configuration configurationName="Debug">
+			<resource resourceType="PROJECT" workspacePath="/Smart_Lighting_System"/>
+		</configuration>
+		<configuration configurationName="Release">
+			<resource resourceType="PROJECT" workspacePath="/Smart_Lighting_System"/>
+		</configuration>
+	</storageModule>
 </cproject>
