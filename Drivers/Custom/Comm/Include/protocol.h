@@ -25,8 +25,8 @@
 #define TURN_PANIC_OFF   0x04 /** Panic module disabling packet */
 #define TURN_LIGHT_ON    0x08 /** Light activating packet */
 #define TURN_LIGHT_OFF   0x10 /** Light disabling packet */
-#define TURN_MVMT_ON     0x11 /** Movement sensor activating packet */
-#define TURN_MVMT_OFF    0x12 /** Movement sensor disabling packet */
+#define TURN_MVMT_ON     0x20 /** Movement sensor activating packet */
+#define TURN_MVMT_OFF    0x40 /** Movement sensor disabling packet */
 
 /**
  * @brief This function is used to react to received data
