@@ -10,6 +10,8 @@
 #include "stm32f4xx_hal.h"
 #include <stdint.h>
 
+extern TIM_HandleTypeDef htim1;
+
 static uint8_t received_data[PACKET_SIZE];
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *UartHandle) {

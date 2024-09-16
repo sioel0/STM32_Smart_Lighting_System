@@ -1,5 +1,5 @@
 ../Drivers/Custom/Panic/Src/panic.c:16:9:panic_is_active	4	static
-../Drivers/Custom/Panic/Src/panic.c:20:6:panic_activate	4	static
-../Drivers/Custom/Panic/Src/panic.c:24:6:panic_deactivate	4	static
-../Drivers/Custom/Panic/Src/panic.c:28:6:panic_init	8	static
-../Drivers/Custom/Panic/Src/panic.c:36:6:panic_main	8	static
+../Drivers/Custom/Panic/Src/panic.c:20:6:panic_activate	8	static
+../Drivers/Custom/Panic/Src/panic.c:26:6:panic_deactivate	8	static
+../Drivers/Custom/Panic/Src/panic.c:31:6:panic_init	8	static
+../Drivers/Custom/Panic/Src/panic.c:35:6:panic_main	8	static

@@ -29,25 +29,25 @@
 	\noindent La versione del progetto realizzato prevede una serie di feature presenti anche nello stato dell'arte attuale aggiungendo alcune piccole modifiche per una migliore integrazione all'interno delle \textit{smart city} e un tentativo di migliorare il contesto di sicurezza urbana.
 	Il sistema realizzato prevede le seguenti feature:
 	\begin{itemize}
-		\item Controllo del sistema di illuminazione da remoto con accensione e spegnimento delle varie fetaure tramite rete LoRa.
+		\item Controllo del sistema di illuminazione da remoto con accensione e spegnimento delle varie features tramite rete LoRa.
 		\item Livello di illuminazione controllato automaticamente in base al livello di luce ambientale.
 		\item Incremento dell'intensit\`a luminosa al passaggio di individui nei pressi del sistema.
 		\item \textit{Panic button} per la segnalazione di eventuali situazioni di emergenza alle forze dell'ordine e emissione di un segnale sonoro per attirare l'attenzione dei passanti.
 	\end{itemize}
-	L'aggiunta di un \textit{panic button}, come evidenziato in precedenza \`e stato pensato per migliorare il livello di sicurezza urbana. Grazie a questo elemento, infatti, adeguatamente integrato con telecamere di sicurezza, sarebbe possibile ottenere
+	L'aggiunta di un \textit{panic button}, come evidenziato in precedenza, \`e stato pensato per migliorare il livello di sicurezza urbana. Grazie a questo elemento, infatti, adeguatamente integrato con telecamere di sicurezza, sarebbe possibile ottenere
 	una sengalazione tempestiva delle sitauzioni di emergenza aggiungendo inoltre la possibilit\`a di attirare l'attenzione dei
 	passanti e cercare quindi di sventare le situazioni di pericolo e/o emergenza anche tramite l'aiuto di cittadini presenti in loco.
 	
 	\section{Hardware utilizzato}
 	Il sistema realizzato presenta diverse componenti hardware:
 	\begin{itemize}
-		\item Scheda di sviluppo STM32F411e-disco: essendo il progetto un proof of concept é stata utilizzata una development board commerciale, per poter rendere il progetto in questione, un possibile dispositivo atto alla vendita sarebbe necessaria la realizzazione di un PCB custom contenente tutto l'hardware necessario e una forma consona alla dissipazione del calore.
+		\item Scheda di sviluppo STM32F411e-disco: essendo il progetto un proof of concept é stata utilizzata una development board commerciale; per poter rendere il progetto in questione, un possibile dispositivo atto alla vendita, sarebbe necessaria la realizzazione di un PCB custom contenente tutto l'hardware necessario e una forma consona alla dissipazione del calore.
 		\item Matrice led CharlieWing: elemento utilizzato per generare l'illuminazione necessaria. La matrice utilizzata viene comandata tramite \textit{i2c} all'indirizzo \texttt{0x74}.
-		\item Scheda di sviluppo Raspberrypi Pico: per realizzare la comunicazione wireless senza aggiungere un eccessivo overhead sull'MCU \`e stato introdotto un coprocessore che gestisse autonomamente la comunicazione wireless tramite LoRa. 	Per effettuare la comunicazione tramite LoRa viene utilizzato un dispositivo \href{https://www.waveshare.com/wiki/Pico-LoRa-SX1262}{WaveShare LoRa Shield} basato su SX1262.
-		\item Sensori di movimento SR602: per poter aumentare l'intensit\`a luminosa al passaggio di cittadini nei pressi del sistema di illumincazione sono stati introdotit dei sensori di movimento per rilevarne la presenza.
-		\item Fotoresistore: la presenza di un foto resistore permette di rilevare il livello di luminosit\`a ambientale e regolare l'intensit\`a della luce emessa conseguentemente.
-		\item Panic button: la presenza di questo bottone \`e intesa per la segnalazione delle situazioni di emergenza.
-		\item Panic buzzer attivo: utilizzato per l'emissione di un segnale sonore atto ad attirare l'attenzione in situazioni di emergenza.
+		\item Scheda di sviluppo Raspberrypi Pico: per realizzare la comunicazione wireless senza aggiungere un eccessivo overhead sull'MCU \`e stato introdotto un coprocessore in modo da gestire autonomamente la comunicazione wireless tramite LoRa. 	Per effettuare la comunicazione tramite LoRa viene utilizzato un dispositivo \href{https://www.waveshare.com/wiki/Pico-LoRa-SX1262}{WaveShare LoRa Shield} basato su SX1262.
+		\item Sensori di movimento SR602: per poter aumentare l'intensit\`a luminosa al passaggio di cittadini nei pressi del sistema di illuminazione sono stati introdotti dei sensori di movimento per rilevarne la presenza.
+		\item Fotoresistore: la presenza di un fotoresistore permette di rilevare il livello di luminosit\`a ambientale e regolare l'intensit\`a della luce emessa conseguentemente.
+		\item Panic button: la presenza di questo bottone \`e pensata per la segnalazione delle situazioni di emergenza.
+		\item Panic buzzer attivo: utilizzato per l'emissione di un segnale sonoro atto ad attirare l'attenzione in situazioni di emergenza.
 	\end{itemize}
 	In Figura \ref{img:hw} \`e evidenziata la schematica di collegamento dei dispositivi hardware coinvolti.
 	
@@ -64,7 +64,7 @@
 	
 	\subsection{MCU}
 	Il software presente sull'MCU, stm32f411, responsabile del funzionamento generale del sistema, risulta essere suddiviso in tre elementi principali: un componente di comunicazione con il coprocessore wireless, un componente per la gestione dell'illuminazione e una parte dedicata alle segnalazione di emergenza.
-	Pur essendo tre le componenti del sistema il software risulta essere suddiviso in quattro moduli, oltre ai tre moduli precedentemente indicati, infatti, \`e presente un modulo di gestione dei sensori. Questo modulo pu\`o essere considerato parte della componente atta alla gestione dell'illuminazione essendo l'unico modulo che ne sfrutta il funzionamento.
+	Pur essendo tre le componenti del sistema, il software risulta essere suddiviso in quattro moduli, oltre ai tre moduli precedentemente indicati, infatti, \`e presente un modulo di gestione dei sensori. Questo modulo pu\`o essere considerato parte della componente atta alla gestione dell'illuminazione essendo l'unico modulo che ne sfrutta il funzionamento.
 	
 	\subsubsection{Modulo Light}
 	\begin{figure}[ht]
@@ -77,7 +77,7 @@
 	Come si pu\`o notare in Figura \ref{img:lights}, il modulo presenta un'interfaccia ad alto livello per le varie funzioni supportate e, come livello di astrazione della comunicazione con la matrice, un sottomodulo \textit{i2c\_light}.
 	Il modulo \textit{Light} offre la possibilit\`a di attivare e disattivare il sistema di illuminazione, incrementare in maniera graduale il livello di illuminazione prodotto per migliorare la luminosit\`a in caso di passaggio dei cittadini e regolare il livello di luminosit\`a sfruttando il sensore di luce ambientale ad intervalli di 1 minuto.
 	Per garantire la frequenza di controllo del livello di luminosit\`a ambientale viene utilizzato il timer \texttt{TIM4}.
-	In seguito all'incremento del livello di luminosit\`a dovuto al passaggio di un cittadino tramite l'utilizzo del timer \texttt{TIM9}, si garantisce che la luminosit\`a verr\`a mantenuta all'intensit\`a massima per quindici secondi.
+	In seguito all'incremento del livello di luminosit\`a dovuto al passaggio di un cittadino, tramite l'utilizzo del timer \texttt{TIM9}, si garantisce che la luminosit\`a verr\`a mantenuta all'intensit\`a massima per dieci secondi dall'ultima volta in cui \`e stato rilevato del movimento nei pressi del sistema.
 	
 	\subsubsection{Modulo Sensors}
 	\begin{figure}[ht]
@@ -103,12 +103,12 @@
 		\label{img:panic}
 	\end{figure}
 	\noindent Il modulo \textit{Panic} rappresenta l'elemento software che gestisce per intero la componente per la segnalazione delle emergenze.
-	Il modulo, come avviene all'interno delle altre componenti visibile anche in Figura \ref{img:panic}, presenta una serie di funzioni ad alto livello che fornisce tutte le funzioni necessarie per il funzionamento di base del componente.
+	Il modulo, come avviene all'interno delle altre componenti visibile anche in Figura \ref{img:panic}, presenta una serie di funzioni ad alto livello che forniscono tutte le funzioni necessarie per il funzionamento di base del componente.
 	Sono presenti inoltre 3 sotto moduli, utilizzati direttamente dal modulo principale, che permettono di gestire singolarmente i vari elementi necessari:
 	\begin{itemize}
 		\item \textit{panic\_buzzer} che si occupa della gestione del buzzer per la generazione di segnali sonori.
 		\item \textit{panic\_button} che gestisce le interazioni con il bottone di emergenza.
-		\item \textit{panic\_timer} che utilizza il timer \texttt{TIM3} per gestire l'alternarsi di accensione e spegnimento del buzzer.
+		\item \textit{panic\_timer} che utilizza il timer \texttt{TIM3} per gestire l'alternarsi di accensione e spegnimento del buzzer ad intervalli di un secondo.
 	\end{itemize}
 	
 	\subsubsection{Modulo Comm}
@@ -120,9 +120,9 @@
 	\end{figure}
 	\noindent Il modulo \textit{Comm} rappresenta l'unico elemento della componente atta alla comunicazione con il coprocessore wireless.
 	Il modulo in questione utilizza la comunicazione \texttt{uart} per inviare e ricevere i dati dal coprocessore.
-	In particolare, l'invio dei dati, essendo un pacchetto periodico statico e avvendo con una frequenza abbastanza elevata(ogni 5 secondi), per non occupare inutilmente tempo CPU, utilizza il \texttt{DMA}.
 	Per quanto riguarda la ricezione dei dati, invece, l'interfaccia \texttt{uart} viene utilizzata in modalit\`a \textit{interrupt}, in questo modo la reazione alla ricezione dei dati risulta essere immediata.
 	Per poter interpretare correttamente i dati viene utilizzato il sottomodulo \textit{protocol} che fornisce la possibilit\`a di interpretare i comandi ricevuti dal router.
+	Il modulo \textit{Comm}, inoltre, viene utilizzato per l'invio periodico di un pacchetto, utilizzato per segnalare il corretto funzionamento del sistema, ad intervalli di circa tre secondi tramite l'utilizzo del timer di sistema \texttt{TIM11}. L'invio dei dati avviene utilizzando il \texttt{DMA} per evitare di occupare tempo CPU vista l'elevata frequenza di invio del pacchetto.
 	
 	\subsection{Coprocessore Wireless}
 	Il componente hardware utilizzato come coprocessore wireless \`e un Raspberrypi Pico che utilizza il microprocessore \href{https://www.raspberrypi.com/documentation/microcontrollers/silicon.html#rp2040}{\textit{RP2040}}. Questo microprocessore presenta due core con architettura Arm-M0+.
@@ -151,10 +151,56 @@
 	Come detto anche in precedenza, l'unico elemento che distingue il funzionamento del coprocessore wireless rispetto al router risulta essere l'interfaccia seriale utilizzata. All'interno del router, infatti, la libreria \textit{libcomm} risulta essere uguale a quella presenta sul coprocessore con l'unica differenza che la classe utilizzata per implementare la classe astratta \textit{Protocol} risulta essere la classe \textit{Usb} che fornisce un'astrazione per quanto riguarda la comunicazione tramite la porta microusb presente sul Pico.
 	
 	\subsection{Protocollo di comunicazione}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.5]{./images/Protocol.jpg}
+		\caption{Protocollo di comunicazione}
+		\label{img:protocol}
+	\end{figure}
 	Il protocollo di comunicazione \`e stato pensato per avere un numero fisso di byte, ogni pacchetto infatti contiene esattamente quattro bytes.
-	Il significato dei singoli byte risulta essere il seguente, come indicato in Figura \ref{img:}
+	Il significato dei singoli byte, come indicato in Figura \ref{img:protocol}, risulta essere il seguente:
+	\begin{itemize}
+		\item il primo byte viene utilizzato per indicare il dispositivo di destinazione del pacchetto.
+		\item il secondo byte viene utilizzato per indicare il dispositivo che ha emesso il pacchetto.
+		\item il terzo byte indica il tipo di pacchetto, viene impostato ad uno il bit corrispondente al tipo.
+		\item il quarto byte viene utilizzato per indicare i dati aggiuntivi necessari per il tipo di pacchetto, questo byte viene utilizzato solo dai pacchetti di tipo \textit{command} per indicare l'azione richiesta, in tutti gli altri pacchetti il byte risulta essere \texttt{0x00}.
+	\end{itemize}
 	
 	\subsection{Interazioni tra i moduli}
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.5]{./images/Interaction_diagram.jpg}
+		\caption{Diagramma di interazione delle componenti}
+		\label{img:interaction_diag}
+	\end{figure}
+	\noindent La Figura \ref{img:interaction_diag} presenta un diagramma di interazione delle componenti.
+	Come si pu\`o notare i moduli \textit{Comm} sia dell'MCU che del coprocessore risultano essere le due componenti che permettono l'interazione tra i due elementi hardware. I dati che vengono inviati in uscita dall'MCU risultano essere i pacchetti generati dal sistema di gestione delle emergenze ed i pacchetti periodici che vengono utilizzati per segnalare il corretto funzionamento del sistema. I pacchetti che vengono inviati dal coprocessore all'MCU, invece, sono solamente i pacchetti contenenti i comandi.
+	All'interno del coprocessore, per favorire lo scambio dei dati tra le due componenti software presenti, sono stati predisposti due buffer circolari con accesso in mutua esclusione. Questi due buffer permettono di processare i dati ricevuti senza preoccuparsi dell'arrivo imminente di un altro pacchetto.
+	Il modulo \textit{Comm} dell'MCU, oltre a gestire la comunicazione con il coprocessore ha il compito di attivare e disattivare gli altri moduli in base ai comandi ricevuti dal router.
+	Il modulo \textit{Sensors} fornisce al modulo \textit{Light}, solamente quando il modulo \textit{Light} \`e acceso, i dati catturati dai sensori di luce ambientale e di movimento.
+	Il modulo \textit{Panic}, infine, genera i pacchetti per il modulo \textit{Comm} utilizzati per segnalare al router le situazioni di emergenza.
 	
-
+	\section{Tempi di esecuzione}
+	La parte del sistema per cui l'analisi dei tempi di esecuzione risulta essere la pi\`u significativa \`e la fase di inizializzazione.
+	Durante questa fase, infatti, viene mandata una grossa mole di dati alla matrice led essendo necessaria l'inizializzazione di tutti i registri presenti sul dispositivo.
+	
+	\noindent Un altro elemento per cui pu\`o essere effettuata l'analisi dei tempi di esecuzione sono le tempistiche di reazione ai comandi.
+	Questa misurazione non risulta essere molto significativa perch\`e il sistema realizzato non \`e time sensitive ma rappresenta i tempi di reazione del sistema agli impulsi esterni.
+	
+	\noindent I tempi misurati per le due fasi indicate sono i seguenti:
+	\begin{itemize}
+		\item inizializzazione del sistema: \textit{33 ms}
+		\item reazione ai comandi: \textit{$\leq$ 1ms}
+	\end{itemize}
+	
+	\section{Analisi dei consumi}
+	Dal punto vista energetico, risulta necessario distinguire diverse condizioni.
+	\`E necessario evidenziare che, essendo un sistema di illuminazione la maggior parte dell'energia consumata viene assorbita dalla matrice led. Nell'eventualit\`a della realizzazione del sistema in dimensioni maggiori adatte all'illuminazione stradale, i consumi risulterebbero maggiori.
+	Come detto in precedenza possiamo distinguere due diverse condizioni di funzionamento:
+	\begin{itemize}
+		\item quando  la matrice led risulta essere accesa vengono registrati dei consumi di circa \textit{500 mA}.
+		\item quando la matrice led risulta essere spenta vengono registrati dei consumi di circa \textit{200 mA}.
+	\end{itemize}
+	La presenza del buzzer per la segnalazione delle emergenze e del coprocessore wireless producono delle oscillazioni al consumo registrato. Il coprocessore wireless, infatti, richiede un incremento del consumo di circa \textit{40 mA} durante la fase di invio dei dati. Il buzzer, invece, durante l'emissione dei sengali sonori produce un incremento del consumo di circa \textit{25 mA}.
+	
 \end{document}

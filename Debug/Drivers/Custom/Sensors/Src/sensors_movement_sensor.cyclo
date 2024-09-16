@@ -1,5 +1,5 @@
-../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:20:6:sensors_movement_detected	1
-../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:29:9:sensors_movement_is_detected	1
-../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:39:6:sensors_movement_detected_reset	1
-../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:47:6:sensors_movement_sensor_on	1
-../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:56:6:sensors_movement_sensor_off	1
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:15:6:sensors_movement_detected	1
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:19:9:sensors_movement_is_detected	1
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:29:6:sensors_movement_detected_reset	1
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:37:6:sensors_movement_sensor_on	1
+../Drivers/Custom/Sensors/Src/sensors_movement_sensor.c:46:6:sensors_movement_sensor_off	1
